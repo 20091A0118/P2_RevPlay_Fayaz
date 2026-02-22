@@ -1,4 +1,4 @@
-package com.rev.app.entity;
+package com.revplay.app.entity;
 
 import java.time.LocalDateTime;
 
@@ -8,6 +8,7 @@ public class Podcast {
     private String hostName;
     private String category;
     private String description;
+    private String coverImageUrl;
     private LocalDateTime createdAt;
 
     public Podcast() {
@@ -69,5 +70,13 @@ public class Podcast {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getCoverImageUrl() {
+        return coverImageUrl;
+    }
+
+    public void setCoverImageUrl(String coverImageUrl) {
+        this.coverImageUrl = coverImageUrl;
     }
 }

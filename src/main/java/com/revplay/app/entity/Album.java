@@ -1,4 +1,4 @@
-package com.rev.app.entity;
+package com.revplay.app.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -8,16 +8,11 @@ public class Album {
     private int albumId;
     private int artistId;
     private String title;
-    // Genre removed from table definition provided by user, only in ARTIST_ACCOUNT
-    // or SONG?
-    // Wait, let me check schema provided.
-    // Table ALBUM { ... title varchar, release_date date, description varchar,
-    // cover_image_url varchar ... }
-    // No genre column in ALBUM table in the new schema.
     private LocalDate releaseDate;
     private String description;
     private String coverImageUrl;
     private LocalDateTime createdAt;
+    private String artistName;
 
     public Album() {
     }
@@ -34,7 +29,6 @@ public class Album {
         this.createdAt = createdAt;
     }
 
-    // Getters & Setters
     public int getAlbumId() {
         return albumId;
     }
@@ -89,5 +83,13 @@ public class Album {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
     }
 }

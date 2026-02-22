@@ -1,4 +1,4 @@
-package com.rev.app.entity;
+package com.revplay.app.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -8,7 +8,7 @@ public class Song {
     private int songId;
     private int artistId;
     private Integer albumId;
-    private int genreId; // Changed from String genre
+    private int genreId;
     private String title;
     private int durationSeconds;
     private LocalDate releaseDate;
@@ -17,8 +17,12 @@ public class Song {
     private String isActive;
     private LocalDateTime createdAt;
 
-    // Helper field for display only (fetched via join)
+    private String coverImageUrl;
+
+    // Helper fields for display (fetched via joins)
     private String genreName;
+    private String artistName;
+    private String albumTitle;
 
     public Song() {
     }
@@ -41,7 +45,6 @@ public class Song {
         this.createdAt = createdAt;
     }
 
-    // Getters & Setters
     public int getSongId() {
         return songId;
     }
@@ -137,5 +140,28 @@ public class Song {
     public void setGenreName(String genreName) {
         this.genreName = genreName;
     }
-}
 
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
+    }
+
+    public String getAlbumTitle() {
+        return albumTitle;
+    }
+
+    public void setAlbumTitle(String albumTitle) {
+        this.albumTitle = albumTitle;
+    }
+
+    public String getCoverImageUrl() {
+        return coverImageUrl;
+    }
+
+    public void setCoverImageUrl(String coverImageUrl) {
+        this.coverImageUrl = coverImageUrl;
+    }
+}

@@ -1,4 +1,4 @@
-package com.rev.app.entity;
+package com.revplay.app.entity;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package com.rev.app.entity;
+package com.revplay.app.entity;
 
 import java.time.LocalDateTime;
 
@@ -7,7 +7,11 @@ public class ListeningHistory {
     private int userId;
     private int songId;
     private LocalDateTime playedAt;
-    private String actionType; // e.g. "PLAYED"
+    private String actionType;
+
+    // Display fields
+    private String songTitle;
+    private String artistName;
 
     public ListeningHistory() {
     }
@@ -59,5 +63,20 @@ public class ListeningHistory {
     public void setActionType(String actionType) {
         this.actionType = actionType;
     }
-}
 
+    public String getSongTitle() {
+        return songTitle;
+    }
+
+    public void setSongTitle(String songTitle) {
+        this.songTitle = songTitle;
+    }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
+    }
+}

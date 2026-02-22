@@ -1,4 +1,4 @@
-package com.rev.app;
+package com.revplay.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
