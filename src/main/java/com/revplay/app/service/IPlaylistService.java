@@ -1,11 +1,11 @@
-package com.revplay.app.repository;
+package com.revplay.app.service;
 
 import com.revplay.app.entity.Playlist;
 import com.revplay.app.entity.Song;
 
 import java.util.List;
 
-public interface IPlaylistRepo {
+public interface IPlaylistService {
     boolean createPlaylist(Playlist playlist);
 
     boolean deletePlaylist(int playlistId);

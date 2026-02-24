@@ -1,11 +1,11 @@
-package com.revplay.app.repository;
+package com.revplay.app.service;
 
 import com.revplay.app.entity.Podcast;
 import com.revplay.app.entity.PodcastEpisode;
 
 import java.util.List;
 
-public interface IPodcastRepo {
+public interface IPodcastService {
     boolean createPodcast(Podcast podcast);
 
     List<Podcast> getAllPodcasts();

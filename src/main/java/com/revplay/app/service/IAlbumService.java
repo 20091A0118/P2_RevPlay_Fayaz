@@ -1,10 +1,10 @@
-package com.revplay.app.repository;
+package com.revplay.app.service;
 
 import com.revplay.app.entity.Album;
 
 import java.util.List;
 
-public interface IAlbumRepo {
+public interface IAlbumService {
     boolean createAlbum(Album album);
 
     Album getAlbumById(int albumId);

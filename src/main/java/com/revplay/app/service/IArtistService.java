@@ -1,19 +1,19 @@
-package com.revplay.app.repository;
+package com.revplay.app.service;
 
 import com.revplay.app.entity.ArtistAccount;
 
 import java.util.List;
 
-public interface IArtistRepo {
+public interface IArtistService {
     boolean registerArtist(ArtistAccount artist);
-
-    ArtistAccount getArtistByEmail(String email);
 
     ArtistAccount getArtistById(int id);
 
-    boolean updateArtistProfile(ArtistAccount artist);
+    ArtistAccount getArtistByEmail(String email);
 
     List<ArtistAccount> getAllArtists();
+
+    boolean updateArtist(ArtistAccount artist);
 
     List<ArtistAccount> searchArtists(String keyword);
 

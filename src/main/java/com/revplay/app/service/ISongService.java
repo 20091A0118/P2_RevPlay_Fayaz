@@ -1,10 +1,10 @@
-package com.revplay.app.repository;
+package com.revplay.app.service;
 
 import com.revplay.app.entity.Song;
 
 import java.util.List;
 
-public interface ISongRepo {
+public interface ISongService {
     boolean addSong(Song song);
 
     Song getSongById(int songId);

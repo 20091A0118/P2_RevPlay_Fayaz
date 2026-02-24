@@ -1,10 +1,10 @@
-package com.revplay.app.repository;
+package com.revplay.app.service;
 
 import com.revplay.app.entity.Song;
 
 import java.util.List;
 
-public interface IFavoriteRepo {
+public interface IFavoriteService {
     boolean addFavorite(int userId, int songId);
 
     boolean removeFavorite(int userId, int songId);
