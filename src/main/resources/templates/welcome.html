@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Welcome to RevPlay')}"></head>
+
+<style>
+    .welcome-page {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #f0f4ff;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .welcome-logo {
+        font-size: 56px;
+        margin-bottom: 12px;
+    }
+
+    .welcome-title {
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #2563eb;
+    }
+
+    .welcome-subtitle {
+        font-size: 16px;
+        color: #555;
+        max-width: 500px;
+        margin-bottom: 40px;
+        line-height: 1.6;
+    }
+
+    .portal-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 100%;
+        max-width: 700px;
+    }
+
+    .portal-card {
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 36px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .portal-card:hover {
+        border-color: #2563eb;
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.12);
+    }
+
+    .portal-icon {
+        font-size: 44px;
+        margin-bottom: 16px;
+    }
+
+    .portal-name {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: #1a1a1a;
+    }
+
+    .portal-desc {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .welcome-footer {
+        position: absolute;
+        bottom: 30px;
+        color: #999;
+        font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+        .portal-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+        }
+    }
+</style>
+
+<body class="welcome-page">
+    <div class="welcome-logo">🎵</div>
+    <h1 class="welcome-title">RevPlay</h1>
+    <p class="welcome-subtitle">Your destination for music streaming. Listen to songs, discover albums, and share your
+        music.</p>
+
+    <div class="portal-grid">
+        <a th:href="@{/login(role='user',portal='true')}" class="portal-card">
+            <div class="portal-icon">🎧</div>
+            <div class="portal-name">Listener Portal</div>
+            <p class="portal-desc">Browse and play songs uploaded by artists.</p>
+        </a>
+        <a th:href="@{/login(role='artist',portal='true')}" class="portal-card">
+            <div class="portal-icon">🎤</div>
+            <div class="portal-name">Artist Portal</div>
+            <p class="portal-desc">Upload songs and manage your albums.</p>
+        </a>
+    </div>
+
+    <div class="welcome-footer">
+        &copy; 2026 RevPlay
+    </div>
+
+    <div th:replace="~{fragments :: scripts}"></div>
+</body>
+
+</html>

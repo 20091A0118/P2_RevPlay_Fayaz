@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('RevPlay - Register')}"></head>
+
+<body>
+    <div id="auth-page" class="auth-container">
+        <div class="auth-card">
+            <h1>🎵 RevPlay</h1>
+            <p class="subtitle">Join the music community</p>
+
+            <div class="auth-tabs" th:style="${param.portal != null ? 'display:none' : ''}">
+                <button class="auth-tab active" onclick="switchAuthType('user')">Listener</button>
+                <button class="auth-tab" onclick="switchAuthType('artist')">Artist</button>
+            </div>
+
+            <div id="error-msg" class="error-msg"></div>
+            <div id="success-msg" class="success-msg"></div>
+
+            <!-- REGISTER FORM -->
+            <form id="register-form" onsubmit="handleRegister(event)">
+                <div id="user-register-fields">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="reg-name" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="reg-email" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="reg-password" placeholder="Create password">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" id="reg-phone" placeholder="Phone number">
+                    </div>
+                    <div class="form-group">
+                        <label>Security Question</label>
+                        <select id="reg-security-q">
+                            <option value="" disabled selected>Select a question...</option>
+                            <option value="What is your mother's maiden name?">What is your mother's maiden name?
+                            </option>
+                            <option value="What was the name of your first pet?">What was the name of your first pet?
+                            </option>
+                            <option value="What is the name of the street you grew up on?">What is the name of the
+                                street you grew up on?</option>
+                            <option value="What is your favorite book?">What is your favorite book?</option>
+                            <option value="What is your favorite color?">What is your favorite color?</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Security Answer</label>
+                        <input type="text" id="reg-security-a" placeholder="Answer">
+                    </div>
+                    <div class="form-group">
+                        <label>Password Hint</label>
+                        <input type="text" id="reg-hint" placeholder="A hint for your password">
+                    </div>
+                </div>
+
+                <div id="artist-register-fields" style="display:none">
+                    <div class="form-group">
+                        <label>Stage Name</label>
+                        <input type="text" id="reg-stagename" placeholder="Your stage name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="reg-artist-email" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="reg-artist-password" placeholder="Create password">
+                    </div>
+                    <div class="form-group">
+                        <label>Genre</label>
+                        <input type="text" id="reg-genre" placeholder="e.g. Pop, Rock, Hip-Hop">
+                    </div>
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea id="reg-bio" placeholder="Tell listeners about yourself..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Instagram Link</label>
+                        <input type="url" id="reg-instagram" placeholder="https://instagram.com/yourprofile">
+                    </div>
+                    <div class="form-group">
+                        <label>YouTube Link</label>
+                        <input type="url" id="reg-youtube" placeholder="https://youtube.com/yourchannel">
+                    </div>
+                    <div class="form-group">
+                        <label>Spotify Link</label>
+                        <input type="url" id="reg-spotify" placeholder="https://spotify.com/artist/yourid">
+                    </div>
+                    <div class="form-group">
+                        <label>Security Question</label>
+                        <select id="reg-artist-security-q">
+                            <option value="" disabled selected>Select a question...</option>
+                            <option value="What is your mother's maiden name?">What is your mother's maiden name?
+                            </option>
+                            <option value="What was the name of your first pet?">What was the name of your first pet?
+                            </option>
+                            <option value="What is the name of the street you grew up on?">What is the name of the
+                                street you grew up on?</option>
+                            <option value="What is your favorite book?">What is your favorite book?</option>
+                            <option value="What is your favorite color?">What is your favorite color?</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Security Answer</label>
+                        <input type="text" id="reg-artist-security-a" placeholder="Answer">
+                    </div>
+                    <div class="form-group">
+                        <label>Password Hint</label>
+                        <input type="text" id="reg-artist-hint" placeholder="A hint for your password">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create Account</button>
+                <div class="auth-link">
+                    Already have an account? <a th:href="@{/login(role=${param.role}, portal=${param.portal})}">Sign
+                        In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments :: scripts}"></div>
+    <script>
+        window.onload = () => {
+            const params = new URLSearchParams(window.location.search);
+            const role = params.get('role');
+            if (role === 'artist') {
+                switchAuthType('artist');
+            } else if (role === 'user') {
+                switchAuthType('user');
+            }
+        };
+    </script>
+</body>
+
+</html>

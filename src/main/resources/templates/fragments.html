@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Head Fragment -->
+
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RevPlay - Music Streaming Platform.">
+    <title th:text="${title}">RevPlay - Music Streaming</title>
+    <link rel="stylesheet" th:href="@{/css/style.css(v=3)}">
+</head>
+
+<body>
+    <!-- Sidebar Fragment -->
+    <aside th:fragment="sidebar(activePage)" class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <span>🎵</span> RevPlay
+        </div>
+
+        <div class="sidebar-section">Browse</div>
+        <a class="sidebar-item" onclick="navigate('home')" style="cursor:pointer">
+            <span class="icon">🏠</span> Home
+        </a>
+        <a class="sidebar-item" onclick="navigate('songs')" style="cursor:pointer">
+            <span class="icon">🎶</span> Songs
+        </a>
+        <a class="sidebar-item" onclick="navigate('albums')" style="cursor:pointer">
+            <span class="icon">💿</span> Albums
+        </a>
+
+        <div class="sidebar-section artist-only" style="display:none; text-transform:uppercase;">ARTIST STUDIO</div>
+        <a class="sidebar-item artist-only" onclick="navigate('upload')" style="cursor:pointer; display:none">
+            <span class="icon">⬆️</span> Upload Song
+        </a>
+        <a class="sidebar-item artist-only" onclick="navigate('my-songs')" style="cursor:pointer; display:none">
+            <span class="icon">🎵</span> My Songs
+        </a>
+        <a class="sidebar-item artist-only" onclick="navigate('my-albums')" style="cursor:pointer; display:none">
+            <span class="icon">💿</span> My Albums
+        </a>
+
+        <div class="sidebar-spacer"></div>
+        <a class="sidebar-item" onclick="navigate('profile')" style="cursor:pointer">
+            <span class="icon">👤</span> Profile
+        </a>
+        <a onclick="logout()" class="sidebar-item" style="cursor:pointer">
+            <span class="icon">🚪</span> Logout
+        </a>
+    </aside>
+
+    <!-- Top Bar Fragment -->
+    <div th:fragment="topbar" class="top-bar">
+        <div class="search-bar">
+            <span class="icon">🔍</span>
+            <input type="text" id="search-input" placeholder="Search songs..." onkeyup="handleSearch(event)">
+        </div>
+        <div class="top-bar-right">
+            <div class="user-chip" onclick="navigate('profile')">
+                <div class="user-avatar" id="user-avatar">U</div>
+                <span class="user-chip-name" id="user-display-name">User</span>
+            </div>
+            <button class="btn btn-secondary btn-sm logout-btn" onclick="logout()" title="Logout">🚪 Logout</button>
+        </div>
+    </div>
+
+    <!-- Player Bar Fragment -->
+    <div th:fragment="player" class="player-bar" id="player-bar" style="display:none">
+        <div class="player-track">
+            <div class="player-thumb" id="player-thumb">🎵</div>
+            <div class="player-track-info">
+                <div class="player-track-title" id="player-title">No song playing</div>
+                <div class="player-track-artist" id="player-artist">-</div>
+            </div>
+        </div>
+        <div class="player-controls">
+            <div class="player-buttons">
+                <button class="player-btn" id="btn-shuffle" onclick="toggleShuffle()" title="Shuffle">🔀</button>
+                <button class="player-btn" onclick="playPrev()" title="Previous">⏮</button>
+                <button class="player-play-btn" id="btn-play-pause" onclick="togglePlayPause()">▶</button>
+                <button class="player-btn" onclick="playNext()" title="Next">⏭</button>
+                <button class="player-btn" id="btn-repeat" onclick="toggleRepeat()" title="Repeat">🔁</button>
+            </div>
+            <div class="player-progress">
+                <span class="player-time" id="current-time">0:00</span>
+                <div class="progress-bar" id="progress-bar" onclick="seekTo(event)">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="player-time" id="total-time">0:00</span>
+            </div>
+        </div>
+        <div class="player-extras">
+            <div class="volume-control">
+                <span class="player-btn" style="font-size:14px">🔊</span>
+                <div class="volume-bar" onclick="setVolume(event)">
+                    <div class="volume-fill" id="volume-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Fragment -->
+    <div th:fragment="modal" class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+        <div class="modal" id="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal</h3>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Toast Fragment -->
+    <div th:fragment="toast" class="toast-container" id="toast-container"></div>
+
+    <!-- Scripts Fragment -->
+    <div th:fragment="scripts">
+        <script th:src="@{/js/app.js(v=3)}"></script>
+    </div>
+
+</body>
+
+</html>

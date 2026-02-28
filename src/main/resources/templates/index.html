@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('RevPlay - Home')}"></head>
+
+<body>
+    <div id="app-page" class="app-layout">
+        <aside th:replace="~{fragments :: sidebar('home')}"></aside>
+
+        <main class="main-content">
+            <div th:replace="~{fragments :: topbar}"></div>
+
+            <div class="content-area animate-in" id="content-area">
+                <div class="page-header">
+                    <div>
+                        <h2>Welcome to RevPlay 👋</h2>
+                        <p class="subtitle">Discover new music and enjoy your favorites</p>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h3>🔥 Trending Songs</h3>
+                    <a th:href="@{/songs}">See all</a>
+                </div>
+
+                <div th:if="${trendingSongs != null and !trendingSongs.isEmpty()}" class="song-list">
+                    <div th:each="song, iter : ${trendingSongs}" class="song-row song-playable"
+                        th:data-id="${song.songId}" th:data-title="${song.title}" th:data-artist="${song.artistName}"
+                        th:data-url="${song.fileUrl}">
+                        <div>
+                            <span class="num" th:text="${iter.index + 1}">1</span>
+                            <span class="play-icon">▶</span>
+                        </div>
+                        <div class="song-info">
+                            <div class="song-thumb" style="background:linear-gradient(135deg, #7c3aed33, #7c3aed66)">🎵
+                            </div>
+                            <div class="song-details">
+                                <div class="song-title" th:text="${song.title}">Song Title</div>
+                                <div class="song-artist" th:text="${song.artistName ?: 'Unknown Artist'}">Artist</div>
+                            </div>
+                        </div>
+                        <div class="song-album" th:text="${song.genreName ?: '-'}">Genre</div>
+                        <div class="song-duration" th:text="${song.durationSeconds}">0</div>
+                        <div class="song-actions" onclick="event.stopPropagation()">
+                            <button class="song-action-btn" title="Favorite">🤍</button>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${trendingSongs == null or trendingSongs.isEmpty()}" class="empty-state">
+                    <span class="icon">🎵</span>
+                    <h3>No trending songs yet</h3>
+                    <p>Start listening to build the charts!</p>
+                </div>
+            </div>
+        </main>
+
+        <div th:replace="~{fragments :: player}"></div>
+    </div>
+
+    <div th:replace="~{fragments :: modal}"></div>
+    <div th:replace="~{fragments :: toast}"></div>
+    <div th:replace="~{fragments :: scripts}"></div>
+
+    <script>
+        // Attach click handlers to song rows via data attributes
+        document.querySelectorAll('.song-playable').forEach(row => {
+            row.addEventListener('click', function () {
+                const id = this.dataset.id;
+                const title = this.dataset.title || 'Unknown';
+                const artist = this.dataset.artist || 'Unknown Artist';
+                const url = this.dataset.url || '';
+                playSongFromModel(id, title, artist, url);
+            });
+        });
+    </script>
+</body>
+
+</html>
