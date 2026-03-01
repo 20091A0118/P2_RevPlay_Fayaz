@@ -40,6 +40,7 @@ public class ViewController {
             "/genres", "/favorites", "/history", "/profile",
             "/upload", "/my-songs", "/my-albums", "/my-podcasts", "/stats" })
     public String dashboardPages(HttpServletResponse response) {
-        return "redirect:/home";
+        setNoCacheHeaders(response);
+        return "index";
     }
 }
