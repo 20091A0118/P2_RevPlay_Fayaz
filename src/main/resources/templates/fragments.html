@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="RevPlay - Music Streaming Platform.">
     <title th:text="${title}">RevPlay - Music Streaming</title>
-    <link rel="stylesheet" th:href="@{/css/style.css(v=3)}">
+    <link rel="stylesheet" th:href="@{/css/style.css(v=4)}">
 </head>
 
 <body>
@@ -130,7 +130,27 @@
 
     <!-- Scripts Fragment -->
     <div th:fragment="scripts">
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
         <script th:src="@{/js/app.js(v=3)}"></script>
+        <script>
+            // Set background class based on current path
+            document.addEventListener('DOMContentLoaded', function () {
+                const path = window.location.pathname;
+                const body = document.body;
+
+                if (path === '/' || path === '/welcome') {
+                    body.classList.add('welcome-page');
+                } else if (path === '/home') {
+                    body.classList.add('home-page');
+                } else if (path.includes('/songs')) {
+                    body.classList.add('songs-page');
+                } else if (path.includes('/albums')) {
+                    body.classList.add('albums-page');
+                } else if (path.includes('/login') || path.includes('/register')) {
+                    body.classList.add('auth-page');
+                }
+            });
+        </script>
     </div>
 
 </body>

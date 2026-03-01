@@ -4,120 +4,149 @@
 <head th:replace="~{fragments :: head('Welcome to RevPlay')}"></head>
 
 <style>
-    .welcome-page {
-        height: 100vh;
+    .welcome-container {
+        position: fixed;
+        inset: 0;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        background: #f0f4ff;
-        text-align: center;
+        background: transparent url('/images/bg_concert.png') no-repeat center center / cover;
         padding: 20px;
+        z-index: 100;
     }
 
-    .welcome-logo {
-        font-size: 56px;
-        margin-bottom: 12px;
+    .welcome-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-xl);
+        padding: 60px 40px;
+        width: 100%;
+        max-width: 650px;
+        text-align: center;
+        box-shadow: var(--shadow);
+        color: white;
+    }
+
+    .welcome-logo-icon {
+        font-size: 64px;
+        margin-bottom: 24px;
+        display: block;
     }
 
     .welcome-title {
-        font-size: 40px;
-        font-weight: 700;
-        margin-bottom: 10px;
-        color: #2563eb;
+        font-size: 48px;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 12px;
+        letter-spacing: -1.5px;
     }
 
     .welcome-subtitle {
-        font-size: 16px;
-        color: #555;
-        max-width: 500px;
-        margin-bottom: 40px;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 48px;
         line-height: 1.6;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .portal-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 24px;
         width: 100%;
-        max-width: 700px;
     }
 
     .portal-card {
-        background: #ffffff;
-        border: 1px solid #e0e0e0;
-        border-radius: 12px;
-        padding: 36px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-lg);
+        padding: 32px 24px;
         cursor: pointer;
-        transition: all 0.2s ease;
+        transition: var(--transition);
         display: flex;
         flex-direction: column;
         align-items: center;
         text-decoration: none;
-        color: inherit;
+        color: white;
     }
 
     .portal-card:hover {
-        border-color: #2563eb;
-        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.12);
+        background: rgba(255, 255, 255, 0.2);
+        border-color: var(--accent-light);
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
     .portal-icon {
-        font-size: 44px;
-        margin-bottom: 16px;
+        font-size: 48px;
+        margin-bottom: 20px;
     }
 
     .portal-name {
         font-size: 22px;
         font-weight: 700;
-        margin-bottom: 6px;
-        color: #1a1a1a;
+        margin-bottom: 8px;
     }
 
     .portal-desc {
         font-size: 14px;
-        color: #555;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.4;
     }
 
     .welcome-footer {
         position: absolute;
         bottom: 30px;
-        color: #999;
-        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
         .portal-grid {
             grid-template-columns: 1fr;
         }
 
+        .welcome-card {
+            padding: 40px 24px;
+        }
+
         .welcome-title {
-            font-size: 28px;
+            font-size: 36px;
         }
     }
 </style>
 
-<body class="welcome-page">
-    <div class="welcome-logo">🎵</div>
-    <h1 class="welcome-title">RevPlay</h1>
-    <p class="welcome-subtitle">Your destination for music streaming. Listen to songs, discover albums, and share your
-        music.</p>
+<body>
+    <div class="welcome-container">
+        <div class="welcome-card">
+            <span class="welcome-logo-icon">🎵</span>
+            <h1 class="welcome-title">RevPlay</h1>
+            <p class="welcome-subtitle">Experience music like never before. Stream your favorite tracks or manage your
+                artistic journey.</p>
 
-    <div class="portal-grid">
-        <a th:href="@{/login(role='user',portal='true')}" class="portal-card">
-            <div class="portal-icon">🎧</div>
-            <div class="portal-name">Listener Portal</div>
-            <p class="portal-desc">Browse and play songs uploaded by artists.</p>
-        </a>
-        <a th:href="@{/login(role='artist',portal='true')}" class="portal-card">
-            <div class="portal-icon">🎤</div>
-            <div class="portal-name">Artist Portal</div>
-            <p class="portal-desc">Upload songs and manage your albums.</p>
-        </a>
-    </div>
+            <div class="portal-grid">
+                <a th:href="@{/login(role='user',portal='true')}" class="portal-card">
+                    <div class="portal-icon">🎧</div>
+                    <div class="portal-name">Listener Portal</div>
+                    <p class="portal-desc">Discover and stream music from talented artists.</p>
+                </a>
+                <a th:href="@{/login(role='artist',portal='true')}" class="portal-card">
+                    <div class="portal-icon">🎤</div>
+                    <div class="portal-name">Artist Portal</div>
+                    <p class="portal-desc">Upload tracks, albums, and grow your audience.</p>
+                </a>
+            </div>
+        </div>
 
-    <div class="welcome-footer">
-        &copy; 2026 RevPlay
+        <div class="welcome-footer">
+            &copy; 2026 RevPlay &bull; All Rights Reserved
+        </div>
     </div>
 
     <div th:replace="~{fragments :: scripts}"></div>
