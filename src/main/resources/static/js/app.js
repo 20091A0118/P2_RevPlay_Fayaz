@@ -474,12 +474,88 @@ async function renderHome() {
 }
 
 async function renderSongs() {
-    const songs = await api('/songs');
     const area = document.getElementById('content-area');
+    area.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+
+    // Fetch filter data simultaneously
+    const [songs, genres, albums, artists] = await Promise.all([
+        api('/songs'),
+        api('/genres'),
+        api('/albums'),
+        api('/artists') // Assuming backend has /artists endpoint. If not, we fall back gracefully or build unique list from songs
+    ]);
+
+    // Store original list for filtering
+    window.currentSongsTemp = songs || [];
+
+    // Build filter dropdown options
+    let genreOpts = '<option value="">All Genres</option>';
+    if (genres) genres.forEach(g => genreOpts += `<option value="${g.genreId}">${g.genreName}</option>`);
+
+    let artistOpts = '<option value="">All Artists</option>';
+    if (artists && artists.length > 0) {
+        artists.forEach(a => artistOpts += `<option value="${a.artistId}">${a.stageName || a.userName}</option>`);
+    } else if (songs) {
+        // Fallback: build unique artist list from songs array
+        const uA = [...new Set(songs.map(s => s.artistName))].filter(Boolean);
+        uA.forEach(a => artistOpts += `<option value="${a}">${a}</option>`);
+    }
+
+    let albumOpts = '<option value="">All Albums</option>';
+    if (albums) albums.forEach(a => albumOpts += `<option value="${a.albumId}">${a.title}</option>`);
+
     area.innerHTML = `<div>
-        <div class="page-header"><div><h2>All Songs</h2><p class="subtitle">${(songs || []).length} tracks available</p></div></div>
-        ${renderSongList(songs || [])}
+        <div class="page-header" style="margin-bottom:15px">
+            <div><h2>All Songs</h2><p class="subtitle" id="song-count-label">${(songs || []).length} tracks available</p></div>
+        </div>
+        
+        <div style="display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; background:white; padding:15px; border-radius:12px; border:1px solid #e0e0e0">
+            <div style="flex:1; min-width:150px">
+                <label style="font-size:12px; color:#555; display:block; margin-bottom:4px">Genre</label>
+                <select id="filter-genre" onchange="applyFilters()" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px">${genreOpts}</select>
+            </div>
+            <div style="flex:1; min-width:150px">
+                <label style="font-size:12px; color:#555; display:block; margin-bottom:4px">Artist</label>
+                <select id="filter-artist" onchange="applyFilters()" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px">${artistOpts}</select>
+            </div>
+            <div style="flex:1; min-width:150px">
+                <label style="font-size:12px; color:#555; display:block; margin-bottom:4px">Album</label>
+                <select id="filter-album" onchange="applyFilters()" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:6px">${albumOpts}</select>
+            </div>
+        </div>
+        
+        <div id="filtered-songs-container">
+            ${renderSongList(songs || [])}
+        </div>
     </div>`;
+}
+
+function applyFilters() {
+    const genreVal = document.getElementById('filter-genre').value;
+    const artistVal = document.getElementById('filter-artist').value;
+    const albumVal = document.getElementById('filter-album').value;
+
+    let filtered = window.currentSongsTemp;
+
+    if (genreVal) {
+        filtered = filtered.filter(s => s.genreId == genreVal);
+    }
+
+    if (artistVal) {
+        // If the value is a number, it's artistId from /artists API. Otherwise it's the fallback name string.
+        if (!isNaN(artistVal)) {
+            filtered = filtered.filter(s => s.artistId == artistVal);
+        } else {
+            filtered = filtered.filter(s => s.artistName === artistVal);
+        }
+    }
+
+    if (albumVal) {
+        filtered = filtered.filter(s => s.albumId == albumVal);
+    }
+
+    document.getElementById('song-count-label').textContent = filtered.length + ' tracks available';
+    document.getElementById('filtered-songs-container').innerHTML = renderSongList(filtered);
 }
 
 async function renderAlbums() {
@@ -996,25 +1072,120 @@ async function renderProfile() {
     const id = state.userId || state.artistId;
     const isArtist = state.authType === 'artist';
     const url = isArtist ? '/artists/' + id : '/users/' + id;
-    const data = await api(url);
+
+    // Fetch profile and stats in parallel
+    const [data, stats] = await Promise.all([
+        api(url),
+        isArtist ? null : api(`/users/${id}/stats`)
+    ]);
+
     const area = document.getElementById('content-area');
     if (!data) { area.innerHTML = '<div class="empty-state"><h3>Profile not found</h3></div>'; return; }
 
-    let html = `<div><div class="page-header"><h2>👤 Profile</h2></div>`;
+    let html = `<div>
+        <div class="page-header" style="flex-direction:row;justify-content:space-between;align-items:center;">
+            <div><h2>👤 Profile</h2></div>
+            <button class="btn btn-secondary btn-sm" onclick='showEditProfileModal(${JSON.stringify(data).replace(/'/g, "\\'")}, ${isArtist})'>✏️ Edit Profile</button>
+        </div>`;
+
+    // Profile Header with Avatar
+    html += `
+        <div style="display:flex;align-items:center;gap:20px;margin-bottom:30px;padding:20px;background:white;border-radius:12px;border:1px solid #e0e0e0">
+            <div style="width:100px;height:100px;border-radius:50%;background:#e0e7ff;font-size:40px;display:flex;align-items:center;justify-content:center;overflow:hidden">
+                ${data.profileImageUrl ? `<img src="${data.profileImageUrl}" style="width:100%;height:100%;object-fit:cover;">` : '👤'}
+            </div>
+            <div>
+                <h3 style="margin:0;font-size:24px">${data.fullName || data.stageName || data.userName || '-'}</h3>
+                <p style="margin:5px 0 0;color:#555">${data.email || '-'}</p>
+            </div>
+        </div>
+    `;
+
     if (isArtist) {
         html += `<div class="stats-row">
-            <div class="stat-card"><div class="stat-value">${data.stageName || '-'}</div><div class="stat-label">Stage Name</div></div>
             <div class="stat-card"><div class="stat-value">${data.genre || '-'}</div><div class="stat-label">Genre</div></div>
         </div>
-        <p style="color:var(--text-secondary);margin-bottom:16px">${data.bio || ''}</p>`;
+        <div style="margin-top:20px;">
+            <h4>Biography</h4>
+            <p style="color:var(--text-secondary);line-height:1.6">${data.bio || 'No biography written yet.'}</p>
+        </div>`;
     } else {
         html += `<div class="stats-row">
-            <div class="stat-card"><div class="stat-value">${data.fullName || '-'}</div><div class="stat-label">Name</div></div>
-            <div class="stat-card"><div class="stat-value">${data.email || '-'}</div><div class="stat-label">Email</div></div>
+            <div class="stat-card"><div class="stat-value">${stats ? stats.favoriteCount : 0}</div><div class="stat-label">Favorites</div></div>
+            <div class="stat-card"><div class="stat-value">${stats ? stats.playlistCount : 0}</div><div class="stat-label">Playlists</div></div>
+        </div>
+        <div style="margin-top:20px;">
+            <h4>About Me</h4>
+            <p style="color:var(--text-secondary);line-height:1.6">${data.bio || 'No bio written yet.'}</p>
         </div>`;
     }
     html += '</div>';
     area.innerHTML = html;
+}
+
+function showEditProfileModal(p, isArtist) {
+    let fields = '';
+    if (isArtist) {
+        fields = `
+            <div class="form-group"><label>Stage Name</label><input type="text" id="edit-name" value="${p.stageName || p.userName || ''}" required></div>
+        `;
+    } else {
+        fields = `
+            <div class="form-group"><label>Full Name</label><input type="text" id="edit-name" value="${p.fullName || p.userName || ''}" required></div>
+        `;
+    }
+
+    openModal('Edit Profile', `
+        <form onsubmit="saveProfile(event, ${isArtist})">
+            ${fields}
+            <div class="form-group"><label>Bio</label><textarea id="edit-bio" placeholder="Tell us about yourself...">${p.bio || ''}</textarea></div>
+            <div class="form-group"><label>Profile Picture</label>
+                <input type="file" id="edit-pic" accept="image/*"
+                       style="padding:10px;background:#f5f5f5;border:2px dashed #e0e0e0;border-radius:8px;cursor:pointer;width:100%">
+            </div>
+            <button type="submit" class="btn btn-primary" id="save-profile-btn">Save Changes</button>
+        </form>
+    `);
+}
+
+async function saveProfile(e, isArtist) {
+    e.preventDefault();
+    const btn = document.getElementById('save-profile-btn');
+    btn.textContent = 'Saving...';
+    btn.disabled = true;
+
+    // Upload new profile picture if provided
+    let profileImageUrl = await uploadImageFile(document.getElementById('edit-pic'));
+
+    let payload = {};
+    if (isArtist) {
+        payload.stageName = document.getElementById('edit-name').value;
+    } else {
+        payload.fullName = document.getElementById('edit-name').value;
+    }
+
+    payload.bio = document.getElementById('edit-bio').value;
+    if (profileImageUrl) {
+        payload.profileImageUrl = profileImageUrl;
+    }
+
+    const id = state.userId || state.artistId;
+    const url = isArtist ? '/artists/' + id : '/users/' + id;
+
+    const res = await api(url, 'PUT', payload);
+
+    closeModal();
+    if (res && res.success) {
+        // Update local state name
+        state.userName = document.getElementById('edit-name').value;
+        localStorage.setItem('userName', state.userName);
+        document.getElementById('user-display-name').textContent = state.userName;
+
+        showToast('Profile updated!');
+        renderProfile(); // re-render to fetch and show changes
+    } else {
+        showToast('Failed to update profile', 'error');
+    }
 }
 
 // ==================== MUSIC PLAYER ====================

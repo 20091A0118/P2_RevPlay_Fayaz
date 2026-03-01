@@ -52,11 +52,17 @@ public class UserAccountServiceImpl implements IUserAccountService {
         return userAccountDao.findByEmail(email)
                 .map(user -> {
                     if (passwordEncoder.matches(password, user.getPasswordHash())) {
-                        return new java.util.HashMap<>(Map.of("success", (Object) true, "userId", user.getUserId(),
-                                "fullName", user.getFullName(), "email", user.getEmail()));
+                        Map<String, Object> res = new java.util.HashMap<>();
+                        res.put("success", true);
+                        res.put("userId", user.getUserId());
+                        res.put("fullName", user.getFullName());
+                        res.put("email", user.getEmail());
+                        return res;
                     }
-                    return new java.util.HashMap<>(
-                            Map.of("success", (Object) false, "message", "Invalid email or password"));
+                    Map<String, Object> err = new java.util.HashMap<>();
+                    err.put("success", false);
+                    err.put("message", "Invalid email or password");
+                    return err;
                 })
                 .orElse(new java.util.HashMap<>(
                         Map.of("success", (Object) false, "message", "Invalid email or password")));

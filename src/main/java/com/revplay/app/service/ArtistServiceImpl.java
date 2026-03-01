@@ -52,12 +52,17 @@ public class ArtistServiceImpl implements IArtistService {
         return artistDao.findByEmail(email)
                 .map(artist -> {
                     if (passwordEncoder.matches(password, artist.getPasswordHash())) {
-                        return new java.util.HashMap<>(
-                                Map.of("success", (Object) true, "artistId", artist.getArtistId(),
-                                        "stageName", artist.getStageName(), "email", artist.getEmail()));
+                        Map<String, Object> res = new java.util.HashMap<>();
+                        res.put("success", true);
+                        res.put("artistId", artist.getArtistId());
+                        res.put("stageName", artist.getStageName());
+                        res.put("email", artist.getEmail());
+                        return res;
                     }
-                    return new java.util.HashMap<>(
-                            Map.of("success", (Object) false, "message", "Invalid email or password"));
+                    Map<String, Object> err = new java.util.HashMap<>();
+                    err.put("success", false);
+                    err.put("message", "Invalid email or password");
+                    return err;
                 })
                 .orElse(new java.util.HashMap<>(
                         Map.of("success", (Object) false, "message", "Invalid email or password")));

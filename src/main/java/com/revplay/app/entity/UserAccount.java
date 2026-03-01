@@ -36,6 +36,12 @@ public class UserAccount {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "bio", length = 1000)
+    private String bio;
+
+    @Column(name = "profile_image_url", length = 500)
+    private String profileImageUrl;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
@@ -46,6 +52,7 @@ public class UserAccount {
             String passwordHash, String phone,
             String securityQuestion, String securityAnswerHash,
             String passwordHint, String status,
+            String bio, String profileImageUrl,
             LocalDateTime createdAt) {
         this.userId = userId;
         this.fullName = fullName;
@@ -56,6 +63,8 @@ public class UserAccount {
         this.securityAnswerHash = securityAnswerHash;
         this.passwordHint = passwordHint;
         this.status = status;
+        this.bio = bio;
+        this.profileImageUrl = profileImageUrl;
         this.createdAt = createdAt;
     }
 
@@ -137,6 +146,22 @@ public class UserAccount {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
     }
 
     @PrePersist

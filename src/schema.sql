@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS USER_ACCOUNT (
   security_answer_hash VARCHAR(255),
   password_hint VARCHAR(255),
   status VARCHAR(20),
+  bio VARCHAR(1000),
+  profile_image_url VARCHAR(500),
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -20,11 +22,14 @@ CREATE TABLE IF NOT EXISTS ARTIST_ACCOUNT (
   stage_name VARCHAR(100) NOT NULL,
   email VARCHAR(100) UNIQUE NOT NULL,
   password_hash VARCHAR(255) NOT NULL,
-  bio VARCHAR(255),
+  bio VARCHAR(1000),
   genre VARCHAR(50),
   instagram_link VARCHAR(255),
   youtube_link VARCHAR(255),
   spotify_link VARCHAR(255),
+  security_question VARCHAR(255),
+  security_answer_hash VARCHAR(255),
+  password_hint VARCHAR(255),
   status VARCHAR(20),
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );

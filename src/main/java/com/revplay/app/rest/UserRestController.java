@@ -36,6 +36,10 @@ public class UserRestController {
             existing.setPhone(user.getPhone());
         if (user.getPasswordHash() != null)
             existing.setPasswordHash(user.getPasswordHash());
+        if (user.getBio() != null)
+            existing.setBio(user.getBio());
+        if (user.getProfileImageUrl() != null)
+            existing.setProfileImageUrl(user.getProfileImageUrl());
         boolean updated = userService.updateProfile(existing);
         return ResponseEntity.ok(Map.of("success", (Object) updated));
     }
