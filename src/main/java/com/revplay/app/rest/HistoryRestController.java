@@ -25,4 +25,11 @@ public class HistoryRestController {
     public ResponseEntity<Map<String, Object>> clearHistory(@PathVariable int userId) {
         return ResponseEntity.ok(Map.of("success", (Object) historyService.clearHistory(userId)));
     }
+
+    @PostMapping("/{userId}/{songId}")
+    public ResponseEntity<Map<String, Object>> addHistory(
+            @PathVariable int userId, @PathVariable int songId) {
+        historyService.addHistory(userId, songId);
+        return ResponseEntity.ok(Map.of("success", true));
+    }
 }

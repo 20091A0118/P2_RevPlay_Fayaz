@@ -49,6 +49,7 @@ function pathToPage(pathname) {
     const map = {
         '/home': 'home', '/songs': 'songs', '/albums': 'albums',
         '/podcasts': 'podcasts', '/playlists': 'playlists', '/favorites': 'favorites',
+        '/explore-playlists': 'explore-playlists', '/history': 'history',
         '/profile': 'profile', '/upload': 'upload', '/upload-podcast': 'upload-podcast',
         '/my-songs': 'my-songs', '/my-albums': 'my-albums', '/my-podcasts': 'my-podcasts'
     };
@@ -147,7 +148,9 @@ async function navigate(page, skipPush) {
             case 'albums': await renderAlbums(); break;
             case 'podcasts': await renderPodcasts(); break;
             case 'playlists': await renderPlaylists(); break;
+            case 'explore-playlists': await renderExplorePlaylists(); break;
             case 'favorites': await renderFavorites(); break;
+            case 'history': await renderHistory(); break;
             case 'upload': await renderUploadSong(); break;
             case 'upload-podcast': await renderUploadPodcast(); break;
             case 'my-songs': await renderMySongs(); break;
@@ -629,26 +632,48 @@ async function renderPlaylists() {
         document.getElementById('content-area').innerHTML = '<div class="empty-state"><h3>Listeners Only</h3><p>Please login as a listener to view playlists.</p></div>';
         return;
     }
-    const playlists = await api('/playlists/user/' + state.userId);
+    const [playlists, followed] = await Promise.all([
+        api('/playlists/user/' + state.userId),
+        api('/playlists/followed/' + state.userId)
+    ]);
     const area = document.getElementById('content-area');
     let html = `<div>
-        <div class="page-header">
+        <div class="page-header" style="justify-content:space-between">
             <div><h2>📋 My Playlists</h2></div>
             <button class="btn btn-primary btn-sm" onclick="showCreatePlaylistModal()">➕ New Playlist</button>
         </div>`;
 
+    html += '<div class="section-header"><h3>Created by Me</h3></div>';
     if (playlists && playlists.length > 0) {
         html += '<div class="cards-grid">';
         playlists.forEach(p => {
             html += `<div class="card" onclick="viewPlaylist(${p.playlistId})">
                 ${cardImageSimple('', '📋', 'background:#f0fdf4')}
                 <div class="card-title">${p.name}</div>
-                <button class="btn btn-secondary btn-sm" style="margin-top:6px;width:100%" onclick="event.stopPropagation(); deletePlaylist(${p.playlistId})">🗑️ Delete</button>
+                <div style="display:flex;gap:4px;margin-top:6px;">
+                    <button class="btn btn-secondary btn-sm" style="flex:1" onclick="event.stopPropagation(); showUpdatePlaylistModal(${p.playlistId}, '${p.name.replace(/'/g, "\\'")}', '${(p.description || '').replace(/'/g, "\\'")}', '${p.privacyStatus || 'PRIVATE'}')">✏️ Edit</button>
+                    <button class="btn btn-secondary btn-sm" style="flex:1;color:var(--red)" onclick="event.stopPropagation(); deletePlaylist(${p.playlistId})">🗑️</button>
+                </div>
             </div>`;
         });
         html += '</div>';
     } else {
         html += '<div class="empty-state"><h3>No Playlists</h3><p>Create a playlist to organize your favorite songs.</p></div>';
+    }
+
+    html += '<div class="section-header" style="margin-top:40px"><h3>Followed Playlists</h3></div>';
+    if (followed && followed.length > 0) {
+        html += '<div class="cards-grid">';
+        followed.forEach(p => {
+            html += `<div class="card" onclick="viewPlaylist(${p.playlistId})">
+                ${cardImageSimple('', '📋', 'background:#e0f2fe')}
+                <div class="card-title">${p.name}</div>
+                <div class="card-subtitle">Public</div>
+            </div>`;
+        });
+        html += '</div>';
+    } else {
+        html += '<div class="empty-state"><h3>Not following any</h3><p>Explore public playlists to follow them.</p></div>';
     }
     html += '</div>';
     area.innerHTML = html;
@@ -658,6 +683,13 @@ function showCreatePlaylistModal() {
     openModal('Create Playlist', `
         <form onsubmit="createPlaylist(event)">
             <div class="form-group"><label>Playlist Name</label><input type="text" id="playlist-name" required></div>
+            <div class="form-group"><label>Description</label><textarea id="playlist-desc"></textarea></div>
+            <div class="form-group"><label>Privacy</label>
+                <select id="playlist-privacy">
+                    <option value="PRIVATE">Private</option>
+                    <option value="PUBLIC">Public</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
     `);
@@ -666,7 +698,10 @@ function showCreatePlaylistModal() {
 async function createPlaylist(e) {
     e.preventDefault();
     const name = document.getElementById('playlist-name').value;
-    const res = await api('/playlists', 'POST', { userId: state.userId, name: name });
+    const desc = document.getElementById('playlist-desc').value;
+    const privacy = document.getElementById('playlist-privacy').value;
+
+    const res = await api('/playlists', 'POST', { userId: state.userId, name: name, description: desc, privacyStatus: privacy });
     closeModal();
     if (res && res.success) {
         showToast('Playlist created');
@@ -676,18 +711,213 @@ async function createPlaylist(e) {
     }
 }
 
+function showUpdatePlaylistModal(id, name, desc, privacy) {
+    openModal('Edit Playlist', `
+        <form onsubmit="updatePlaylist(event, ${id})">
+            <div class="form-group"><label>Playlist Name</label><input type="text" id="upd-playlist-name" value="${name}" required></div>
+            <div class="form-group"><label>Description</label><textarea id="upd-playlist-desc">${desc}</textarea></div>
+            <div class="form-group"><label>Privacy</label>
+                <select id="upd-playlist-privacy">
+                    <option value="PRIVATE" ${privacy === 'PRIVATE' ? 'selected' : ''}>Private</option>
+                    <option value="PUBLIC" ${privacy === 'PUBLIC' ? 'selected' : ''}>Public</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    `);
+}
+
+async function updatePlaylist(e, id) {
+    e.preventDefault();
+    const name = document.getElementById('upd-playlist-name').value;
+    const desc = document.getElementById('upd-playlist-desc').value;
+    const privacy = document.getElementById('upd-playlist-privacy').value;
+
+    const res = await api('/playlists/' + id, 'PUT', { userId: state.userId, name: name, description: desc, privacyStatus: privacy });
+    closeModal();
+    if (res && res.success) {
+        showToast('Playlist updated');
+        navigate('playlists');
+    } else {
+        showToast('Update failed', 'error');
+    }
+}
+
 async function viewPlaylist(playlistId) {
-    const [playlist, songs] = await Promise.all([
+    const [playlist, songs, followed] = await Promise.all([
         api('/playlists/' + playlistId),
-        api('/playlists/' + playlistId + '/songs')
+        api('/playlists/' + playlistId + '/songs'),
+        api('/playlists/followed/' + state.userId)
     ]);
     const area = document.getElementById('content-area');
     if (!playlist) { area.innerHTML = '<div class="empty-state"><h3>Playlist not found</h3></div>'; return; }
 
-    area.innerHTML = `<div>
-        <div class="page-header"><div><h2>📋 ${playlist.name}</h2></div></div>
-        ${renderSongList(songs || [])}
-    </div>`;
+    const isOwner = playlist.userId == state.userId;
+    const isFollowing = followed && followed.some(p => p.playlistId == playlistId);
+
+    let html = `<div>
+        <div class="page-header" style="justify-content:space-between; align-items:flex-start">
+            <div>
+                <h2>📋 ${playlist.name}</h2>
+                <p class="subtitle">${playlist.description || ''}</p>
+                <span class="badge" style="background:#eee;color:#333;font-size:12px;padding:4px 8px;border-radius:4px">${playlist.privacyStatus || 'PRIVATE'}</span>
+            </div>
+            <div>`;
+
+    if (!isOwner) {
+        html += `<button class="btn btn-primary btn-sm" onclick="toggleFollowPlaylist(${playlistId}, ${isFollowing})">${isFollowing ? 'Unfollow' : 'Follow'}</button>`;
+    }
+
+    html += `</div></div>`;
+
+    if (songs && songs.length > 0) {
+        html += '<div class="song-list">';
+        songs.forEach((song, i) => {
+            html += `
+            <div class="song-row" onclick="playSongFromList(${JSON.stringify(songs).replace(/"/g, '&quot;')}, ${i})">
+                <div>
+                    <span class="num">${i + 1}</span>
+                    <span class="play-icon">▶</span>
+                </div>
+                <div class="song-info">
+                    ${songThumbHtml(song)}
+                    <div class="song-details">
+                        <div class="song-title">${song.title || 'Unknown'}</div>
+                        <div class="song-artist">${song.artistName || 'Unknown Artist'}</div>
+                    </div>
+                </div>
+                <div class="song-album">${song.albumTitle || song.genreName || '-'}</div>
+                <div class="song-actions" onclick="event.stopPropagation()">
+                    ${isOwner && i > 0 ? `<button class="song-action-btn" onclick="reorderPlaylist(${playlistId}, ${song.songId}, -1, ${JSON.stringify(songs).replace(/"/g, '&quot;')})" title="Move Up">⬆️</button>` : ''}
+                    ${isOwner && i < songs.length - 1 ? `<button class="song-action-btn" onclick="reorderPlaylist(${playlistId}, ${song.songId}, 1, ${JSON.stringify(songs).replace(/"/g, '&quot;')})" title="Move Down">⬇️</button>` : ''}
+                    ${isOwner ? `<button class="song-action-btn" style="color:var(--red)" onclick="removeSongFromPlaylist(${playlistId}, ${song.songId})" title="Remove">🗑️</button>` : ''}
+                </div>
+            </div>`;
+        });
+        html += '</div>';
+    } else {
+        html += '<div class="empty-state"><h3>Empty Playlist</h3><p>Add some songs to get started.</p></div>';
+    }
+    html += '</div>';
+    area.innerHTML = html;
+}
+
+async function removeSongFromPlaylist(playlistId, songId) {
+    if (!confirm('Remove song from playlist?')) return;
+    const res = await api(`/playlists/${playlistId}/songs/${songId}`, 'DELETE');
+    if (res && res.success) {
+        showToast('Song removed');
+        viewPlaylist(playlistId);
+    } else {
+        showToast('Removal failed', 'error');
+    }
+}
+
+async function reorderPlaylist(playlistId, songId, direction, currentSongs) {
+    const idx = currentSongs.findIndex(s => s.songId == songId);
+    if (idx < 0) return;
+    const newIdx = idx + direction;
+    if (newIdx < 0 || newIdx >= currentSongs.length) return;
+
+    const newOrder = [...currentSongs];
+    const temp = newOrder[idx];
+    newOrder[idx] = newOrder[newIdx];
+    newOrder[newIdx] = temp;
+
+    const ids = newOrder.map(s => s.songId);
+    const res = await api(`/playlists/${playlistId}/reorder`, 'POST', ids);
+    if (res && res.success) {
+        viewPlaylist(playlistId);
+    } else {
+        showToast('Failed to reorder', 'error');
+    }
+}
+
+async function toggleFollowPlaylist(playlistId, currentlyFollowing) {
+    if (!state.userId) { showToast('Login to follow playlists', 'error'); return; }
+    const method = currentlyFollowing ? 'DELETE' : 'POST';
+    const res = await api(`/playlists/follow/${playlistId}/${state.userId}`, method);
+    if (res && res.success) {
+        showToast(currentlyFollowing ? 'Unfollowed playlist' : 'Followed playlist');
+        viewPlaylist(playlistId);
+    } else {
+        showToast('Action failed', 'error');
+    }
+}
+
+async function renderExplorePlaylists() {
+    const playlists = await api('/playlists/public');
+    const area = document.getElementById('content-area');
+    let html = `<div>
+        <div class="page-header"><h2>🌍 Explore Playlists</h2><p class="subtitle">Public playlists from other users</p></div>`;
+
+    if (playlists && playlists.length > 0) {
+        html += '<div class="cards-grid">';
+        playlists.forEach(p => {
+            html += `<div class="card" onclick="viewPlaylist(${p.playlistId})">
+                ${cardImageSimple('', '📋', 'background:#e0f2fe')}
+                <div class="card-title">${p.name}</div>
+                <div class="card-subtitle">${p.songCount || 0} tracks</div>
+            </div>`;
+        });
+        html += '</div>';
+    } else {
+        html += '<div class="empty-state"><h3>No public playlists yet</h3><p>Be the first to create and share one!</p></div>';
+    }
+    html += '</div>';
+    area.innerHTML = html;
+}
+
+async function renderHistory() {
+    if (!state.userId) {
+        document.getElementById('content-area').innerHTML = '<div class="empty-state"><h3>Listeners Only</h3><p>Please login as a listener to view history.</p></div>';
+        return;
+    }
+    const history = await api('/history/' + state.userId);
+    const area = document.getElementById('content-area');
+
+    let html = `<div>
+        <div class="page-header" style="justify-content:space-between">
+            <div><h2>🕒 Listening History</h2><p class="subtitle">Recently played songs (last 50)</p></div>
+            <button class="btn btn-secondary btn-sm" style="color:var(--red)" onclick="clearHistory()">🗑️ Clear History</button>
+        </div>`;
+
+    if (history && history.length > 0) {
+        const top50 = history.slice(0, 50);
+        html += '<div class="song-list">';
+        top50.forEach((h, i) => {
+            const dateStr = new Date(h.playedAt).toLocaleString();
+            html += `
+            <div class="song-row" style="cursor:default">
+                <div>
+                    <span class="num" style="font-size:12px;color:#aaa">${dateStr}</span>
+                </div>
+                <div class="song-info">
+                    <div class="song-thumb" style="background:#f3f4f6">🕒</div>
+                    <div class="song-details">
+                        <div class="song-title">${h.songTitle || 'Unknown'}</div>
+                        <div class="song-artist">${h.artistName || 'Unknown Artist'}</div>
+                    </div>
+                </div>
+            </div>`;
+        });
+        html += '</div>';
+    } else {
+        html += '<div class="empty-state"><h3>No history</h3><p>Start listening to songs to build your history.</p></div>';
+    }
+    html += '</div>';
+    area.innerHTML = html;
+}
+
+async function clearHistory() {
+    if (!confirm('Clear all listening history?')) return;
+    const res = await api('/history/' + state.userId, 'DELETE');
+    if (res && res.success) {
+        showToast('History cleared');
+        renderHistory();
+    } else {
+        showToast('Failed to clear history', 'error');
+    }
 }
 
 async function deletePlaylist(playlistId) {
@@ -1206,8 +1436,12 @@ function playSongFromModel(id, title, artist, url) {
         state.audio.src = url;
         state.audio.load();
         state.audio.play().catch(e => console.error("Playback failed", e));
-        if (state.userId) api('/songs/' + id + '/play?userId=' + state.userId, 'POST');
+        if (state.userId) {
+            api('/songs/' + id + '/play?userId=' + state.userId, 'POST');
+            if (state.authType === 'user') api(`/history/${state.userId}/${id}`, 'POST');
+        }
     }
+    updatePlayerFavoriteState();
 }
 
 function playSongFromList(songs, index) {
@@ -1239,7 +1473,11 @@ function playCurrent() {
 
     if (song.songId) {
         api(`/songs/${song.songId}/play?userId=${state.userId || ''}`, 'POST');
+        if (state.userId && state.authType === 'user') {
+            api(`/history/${state.userId}/${song.songId}`, 'POST');
+        }
     }
+    updatePlayerFavoriteState();
 
     const fileUrl = song.fileUrl || '';
     if (fileUrl) {
@@ -1271,6 +1509,27 @@ function togglePlayPause() {
     }
     document.getElementById('btn-play-pause').textContent = state.isPlaying ? '⏸' : '▶';
     document.getElementById('player-thumb').className = state.isPlaying ? 'player-thumb playing' : 'player-thumb';
+}
+
+async function updatePlayerFavoriteState() {
+    const btn = document.getElementById('player-fav-btn');
+    if (!btn || !state.currentSong || !state.currentSong.songId || !state.userId || state.authType !== 'user') {
+        if (btn) btn.style.display = 'none';
+        return;
+    }
+    btn.style.display = 'inline-block';
+    const check = await api(`/favorites/${state.userId}/${state.currentSong.songId}`);
+    if (check && check.isFavorite) {
+        btn.textContent = '❤️';
+    } else {
+        btn.textContent = '🤍';
+    }
+}
+
+async function togglePlayerFavorite() {
+    if (!state.currentSong || !state.currentSong.songId) return;
+    const btn = document.getElementById('player-fav-btn');
+    await toggleFavorite(state.currentSong.songId, btn);
 }
 
 function playNext() {

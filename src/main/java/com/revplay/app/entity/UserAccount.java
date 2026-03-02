@@ -45,6 +45,10 @@ public class UserAccount {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "USER_FOLLOWED_PLAYLISTS", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "playlist_id"))
+    private java.util.List<Playlist> followedPlaylists = new java.util.ArrayList<>();
+
     public UserAccount() {
     }
 
@@ -169,5 +173,13 @@ public class UserAccount {
         if (createdAt == null) {
             createdAt = LocalDateTime.now();
         }
+    }
+
+    public java.util.List<Playlist> getFollowedPlaylists() {
+        return followedPlaylists;
+    }
+
+    public void setFollowedPlaylists(java.util.List<Playlist> followedPlaylists) {
+        this.followedPlaylists = followedPlaylists;
     }
 }

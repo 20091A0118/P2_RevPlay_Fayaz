@@ -22,4 +22,12 @@ public interface IPlaylistService {
     List<Song> getPlaylistSongs(int playlistId);
 
     List<Playlist> getPublicPlaylists();
+
+    boolean reorderPlaylistSongs(int playlistId, List<Integer> newSongIds);
+
+    boolean followPlaylist(int userId, int playlistId);
+
+    boolean unfollowPlaylist(int userId, int playlistId);
+
+    List<Playlist> getFollowedPlaylists(int userId);
 }

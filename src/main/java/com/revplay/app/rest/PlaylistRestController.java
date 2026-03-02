@@ -64,4 +64,33 @@ public class PlaylistRestController {
         return ResponseEntity
                 .ok(Map.of("success", (Object) playlistService.removeSongFromPlaylist(playlistId, songId)));
     }
+
+    @GetMapping("/public")
+    public ResponseEntity<List<Playlist>> getPublicPlaylists() {
+        return ResponseEntity.ok(playlistService.getPublicPlaylists());
+    }
+
+    @PostMapping("/{playlistId}/reorder")
+    public ResponseEntity<Map<String, Object>> reorderPlaylistSongs(
+            @PathVariable int playlistId, @RequestBody List<Integer> newSongIds) {
+        return ResponseEntity
+                .ok(Map.of("success", (Object) playlistService.reorderPlaylistSongs(playlistId, newSongIds)));
+    }
+
+    @PostMapping("/follow/{playlistId}/{userId}")
+    public ResponseEntity<Map<String, Object>> followPlaylist(
+            @PathVariable int playlistId, @PathVariable int userId) {
+        return ResponseEntity.ok(Map.of("success", (Object) playlistService.followPlaylist(userId, playlistId)));
+    }
+
+    @DeleteMapping("/follow/{playlistId}/{userId}")
+    public ResponseEntity<Map<String, Object>> unfollowPlaylist(
+            @PathVariable int playlistId, @PathVariable int userId) {
+        return ResponseEntity.ok(Map.of("success", (Object) playlistService.unfollowPlaylist(userId, playlistId)));
+    }
+
+    @GetMapping("/followed/{userId}")
+    public ResponseEntity<List<Playlist>> getFollowedPlaylists(@PathVariable int userId) {
+        return ResponseEntity.ok(playlistService.getFollowedPlaylists(userId));
+    }
 }

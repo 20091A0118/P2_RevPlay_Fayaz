@@ -34,8 +34,14 @@
         <a class="sidebar-item" onclick="navigate('playlists')" style="cursor:pointer">
             <span class="icon">📋</span> My Playlists
         </a>
+        <a class="sidebar-item" onclick="navigate('explore-playlists')" style="cursor:pointer">
+            <span class="icon">🌍</span> Explore
+        </a>
         <a class="sidebar-item" onclick="navigate('favorites')" style="cursor:pointer">
             <span class="icon">🤍</span> Favorites
+        </a>
+        <a class="sidebar-item" onclick="navigate('history')" style="cursor:pointer">
+            <span class="icon">🕒</span> History
         </a>
 
         <div class="sidebar-section artist-only" style="display:none; text-transform:uppercase;">ARTIST STUDIO</div>
@@ -87,6 +93,8 @@
                 <div class="player-track-title" id="player-title">No song playing</div>
                 <div class="player-track-artist" id="player-artist">-</div>
             </div>
+            <button class="player-btn" id="player-fav-btn" onclick="togglePlayerFavorite()"
+                style="margin-left:10px; font-size:18px; color:var(--text-secondary)" title="Favorite">🤍</button>
         </div>
         <div class="player-controls">
             <div class="player-buttons">
