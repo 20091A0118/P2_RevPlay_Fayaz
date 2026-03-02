@@ -36,6 +36,18 @@ public class ArtistAccount {
     @Column(name = "spotify_link")
     private String spotifyLink;
 
+    @Column(name = "twitter_link")
+    private String twitterLink;
+
+    @Column(name = "website_link")
+    private String websiteLink;
+
+    @Column(name = "profile_image_url", length = 500)
+    private String profileImageUrl;
+
+    @Column(name = "banner_image_url", length = 500)
+    private String bannerImageUrl;
+
     @Column(name = "security_question")
     private String securityQuestion;
 
@@ -57,8 +69,9 @@ public class ArtistAccount {
     public ArtistAccount(int artistId, String stageName, String email,
             String passwordHash, String bio, String genre,
             String instagramLink, String youtubeLink,
-            String spotifyLink, String status,
-            LocalDateTime createdAt) {
+            String spotifyLink, String twitterLink, String websiteLink,
+            String profileImageUrl, String bannerImageUrl,
+            String status, LocalDateTime createdAt) {
         this.artistId = artistId;
         this.stageName = stageName;
         this.email = email;
@@ -68,6 +81,10 @@ public class ArtistAccount {
         this.instagramLink = instagramLink;
         this.youtubeLink = youtubeLink;
         this.spotifyLink = spotifyLink;
+        this.twitterLink = twitterLink;
+        this.websiteLink = websiteLink;
+        this.profileImageUrl = profileImageUrl;
+        this.bannerImageUrl = bannerImageUrl;
         this.status = status;
         this.createdAt = createdAt;
     }
@@ -149,6 +166,38 @@ public class ArtistAccount {
 
     public void setSpotifyLink(String spotifyLink) {
         this.spotifyLink = spotifyLink;
+    }
+
+    public String getTwitterLink() {
+        return twitterLink;
+    }
+
+    public void setTwitterLink(String twitterLink) {
+        this.twitterLink = twitterLink;
+    }
+
+    public String getWebsiteLink() {
+        return websiteLink;
+    }
+
+    public void setWebsiteLink(String websiteLink) {
+        this.websiteLink = websiteLink;
+    }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
+
+    public String getBannerImageUrl() {
+        return bannerImageUrl;
+    }
+
+    public void setBannerImageUrl(String bannerImageUrl) {
+        this.bannerImageUrl = bannerImageUrl;
     }
 
     public String getSecurityQuestion() {

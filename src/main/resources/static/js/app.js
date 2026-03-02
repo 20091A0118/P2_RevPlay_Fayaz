@@ -423,6 +423,7 @@ function renderSongList(songs) {
                 <button class="song-action-btn" title="Add to Playlist" onclick="showAddToPlaylistModal(${song.songId})" style="color:var(--text-secondary)">➕</button>
                 <button class="song-action-btn" title="Favorite" onclick="toggleFavorite(${song.songId}, this)" style="color:var(--accent)">🤍</button>
                 ${song.fileUrl ? `<a href="${song.fileUrl}" class="song-action-btn" title="Download" download style="color:var(--text-secondary)">⬇️</a>` : ''}
+                ${state.artistId && song.artistId == state.artistId ? `<button class="song-action-btn" onclick="showEditSongModal(${song.songId})" style="color:var(--text-secondary)" title="Edit">✏️</button>` : ''}
                 ${state.artistId && song.artistId == state.artistId ? `<button class="song-action-btn" onclick="deleteSong(${song.songId})" style="color:var(--red)" title="Delete">🗑️</button>` : ''}
             </div>
         </div>`;
@@ -1253,7 +1254,11 @@ async function renderMyAlbums() {
                 ${cardImageSimple(a.coverImageUrl, '💿', 'background:#e0e7ff')}
                 <div class="card-title">${a.title}</div>
                 <div class="card-subtitle">${a.releaseDate || ''}</div>
-                ${state.artistId && a.artistId == state.artistId ? `<button class="btn btn-secondary btn-sm" style="margin-top:6px;width:100%" onclick="event.stopPropagation(); deleteAlbum(${a.albumId})">🗑️ Delete</button>` : ''}
+                ${state.artistId && a.artistId == state.artistId ? `
+                <div style="display:flex;gap:4px;margin-top:6px;">
+                    <button class="btn btn-secondary btn-sm" style="flex:1" onclick="event.stopPropagation(); showEditAlbumModal(${a.albumId})">✏️ Edit</button>
+                    <button class="btn btn-secondary btn-sm" style="flex:1;color:var(--red)" onclick="event.stopPropagation(); deleteAlbum(${a.albumId})">🗑️</button>
+                </div>` : ''}
             </div>`;
         });
         html += '</div>';
@@ -1297,6 +1302,98 @@ async function createAlbum(e) {
     navigate('my-albums');
 }
 
+async function showEditSongModal(songId) {
+    const song = await api('/songs/' + songId);
+    if (!song) return;
+    const [genres, albums] = await Promise.all([api('/genres'), api('/albums/artist/' + state.artistId)]);
+
+    let cleanGenres = genres ? genres.filter(g => !g.genreName.includes('-') || g.genreName.length < 20) : [];
+    if (cleanGenres.length === 0) cleanGenres = genres || [];
+    let genreOpts = cleanGenres.map(g => `<option value="${g.genreId}" ${g.genreId == song.genreId ? 'selected' : ''}>${g.genreName}</option>`).join('');
+
+    let albumOpts = '<option value="">No Album (Single)</option>';
+    if (albums) albumOpts += albums.map(a => `<option value="${a.albumId}" ${a.albumId == song.albumId ? 'selected' : ''}>${a.title}</option>`).join('');
+
+    openModal('Edit Song', `
+        <form onsubmit="updateSong(event, ${songId})">
+            <div class="form-group"><label>Title</label><input type="text" id="edit-song-title" value="${song.title}" required></div>
+            <div class="form-group"><label>Genre</label><select id="edit-song-genre">${genreOpts}</select></div>
+            <div class="form-group"><label>Album</label><select id="edit-song-album">${albumOpts}</select></div>
+            <div class="form-group"><label>Visibility</label>
+                <select id="edit-song-visibility">
+                    <option value="ACTIVE" ${song.isActive !== 'UNLISTED' ? 'selected' : ''}>Public</option>
+                    <option value="UNLISTED" ${song.isActive === 'UNLISTED' ? 'selected' : ''}>Unlisted</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" id="update-song-btn">Save Changes</button>
+        </form>
+    `);
+}
+
+async function updateSong(e, songId) {
+    e.preventDefault();
+    const btn = document.getElementById('update-song-btn');
+    btn.textContent = 'Saving...';
+    btn.disabled = true;
+
+    const payload = {
+        title: document.getElementById('edit-song-title').value,
+        genreId: parseInt(document.getElementById('edit-song-genre').value),
+        albumId: document.getElementById('edit-song-album').value ? parseInt(document.getElementById('edit-song-album').value) : null,
+        isActive: document.getElementById('edit-song-visibility').value
+    };
+
+    const res = await api('/songs/' + songId, 'PUT', payload);
+    closeModal();
+    if (res && res.success) {
+        showToast('Song updated');
+        navigate(pathToPage(window.location.pathname), true);
+    } else {
+        showToast('Update failed', 'error');
+    }
+}
+
+async function showEditAlbumModal(albumId) {
+    const album = await api('/albums/' + albumId);
+    if (!album) return;
+    openModal('Edit Album', `
+        <form onsubmit="updateAlbum(event, ${albumId})">
+            <div class="form-group"><label>Title</label><input type="text" id="edit-alb-title" value="${album.title}" required></div>
+            <div class="form-group"><label>Release Date</label><input type="date" id="edit-alb-date" value="${album.releaseDate || ''}" required></div>
+            <div class="form-group"><label>Description</label><textarea id="edit-alb-desc">${album.description || ''}</textarea></div>
+            <div class="form-group"><label>New Cover Image (optional)</label>
+                <input type="file" id="edit-alb-cover" accept="image/*"
+                       style="padding:10px;background:#f5f5f5;border:2px dashed #e0e0e0;border-radius:8px;cursor:pointer;width:100%"></div>
+            <button type="submit" class="btn btn-primary" id="update-alb-btn">Save Changes</button>
+        </form>
+    `);
+}
+
+async function updateAlbum(e, albumId) {
+    e.preventDefault();
+    const btn = document.getElementById('update-alb-btn');
+    btn.textContent = 'Saving...';
+    btn.disabled = true;
+
+    let payload = {
+        title: document.getElementById('edit-alb-title').value,
+        releaseDate: document.getElementById('edit-alb-date').value,
+        description: document.getElementById('edit-alb-desc').value
+    };
+
+    const coverImageUrl = await uploadImageFile(document.getElementById('edit-alb-cover'));
+    if (coverImageUrl) payload.coverImageUrl = coverImageUrl;
+
+    const res = await api('/albums/' + albumId, 'PUT', payload);
+    closeModal();
+    if (res && res.success) {
+        showToast('Album updated');
+        navigate(pathToPage(window.location.pathname), true);
+    } else {
+        showToast('Update failed', 'error');
+    }
+}
+
 // ==================== PROFILE ====================
 async function renderProfile() {
     const id = state.userId || state.artistId;
@@ -1318,15 +1415,25 @@ async function renderProfile() {
             <button class="btn btn-secondary btn-sm" onclick='showEditProfileModal(${JSON.stringify(data).replace(/'/g, "\\'")}, ${isArtist})'>✏️ Edit Profile</button>
         </div>`;
 
-    // Profile Header with Avatar
+    // Profile Header with Avatar & Banner
+    let headerStyle = "position:relative;margin-bottom:30px;padding:20px;background:white;border-radius:12px;border:1px solid #e0e0e0;overflow:hidden;";
+    let bannerHtml = '';
+    if (data.bannerImageUrl) {
+        bannerHtml = `<div style="position:absolute;top:0;left:0;right:0;height:120px;background:url('${data.bannerImageUrl}') center/cover;z-index:0;opacity:0.8;"></div>`;
+        headerStyle += "padding-top:140px;"; // make room for banner
+    }
+
     html += `
-        <div style="display:flex;align-items:center;gap:20px;margin-bottom:30px;padding:20px;background:white;border-radius:12px;border:1px solid #e0e0e0">
-            <div style="width:100px;height:100px;border-radius:50%;background:#e0e7ff;font-size:40px;display:flex;align-items:center;justify-content:center;overflow:hidden">
-                ${data.profileImageUrl ? `<img src="${data.profileImageUrl}" style="width:100%;height:100%;object-fit:cover;">` : '👤'}
-            </div>
-            <div>
-                <h3 style="margin:0;font-size:24px">${data.fullName || data.stageName || data.userName || '-'}</h3>
-                <p style="margin:5px 0 0;color:#555">${data.email || '-'}</p>
+        <div style="${headerStyle}">
+            ${bannerHtml}
+            <div style="display:flex;align-items:center;gap:20px;position:relative;z-index:1;">
+                <div style="width:100px;height:100px;border-radius:50%;background:#e0e7ff;font-size:40px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:4px solid white;box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+                    ${data.profileImageUrl ? `<img src="${data.profileImageUrl}" style="width:100%;height:100%;object-fit:cover;">` : '👤'}
+                </div>
+                <div>
+                    <h3 style="margin:0;font-size:24px;text-shadow: ${data.bannerImageUrl ? '0 1px 3px rgba(255,255,255,0.8)' : 'none'};">${data.fullName || data.stageName || data.userName || '-'}</h3>
+                    <p style="margin:5px 0 0;color:#555">${data.email || '-'}</p>
+                </div>
             </div>
         </div>
     `;
@@ -1334,6 +1441,13 @@ async function renderProfile() {
     if (isArtist) {
         html += `<div class="stats-row">
             <div class="stat-card"><div class="stat-value">${data.genre || '-'}</div><div class="stat-label">Genre</div></div>
+        </div>
+        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+            ${data.instagramLink ? `<a href="${data.instagramLink}" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">Instagram</a>` : ''}
+            ${data.twitterLink ? `<a href="${data.twitterLink}" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">Twitter</a>` : ''}
+            ${data.youtubeLink ? `<a href="${data.youtubeLink}" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">YouTube</a>` : ''}
+            ${data.spotifyLink ? `<a href="${data.spotifyLink}" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">Spotify</a>` : ''}
+            ${data.websiteLink ? `<a href="${data.websiteLink}" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration:none">Website</a>` : ''}
         </div>
         <div style="margin-top:20px;">
             <h4>Biography</h4>
@@ -1358,6 +1472,16 @@ function showEditProfileModal(p, isArtist) {
     if (isArtist) {
         fields = `
             <div class="form-group"><label>Stage Name</label><input type="text" id="edit-name" value="${p.stageName || p.userName || ''}" required></div>
+            <div class="form-group"><label>Genre</label><input type="text" id="edit-genre" value="${p.genre || ''}"></div>
+            <div class="form-group"><label>Instagram</label><input type="url" id="edit-ig" value="${p.instagramLink || ''}"></div>
+            <div class="form-group"><label>Twitter</label><input type="url" id="edit-tw" value="${p.twitterLink || ''}"></div>
+            <div class="form-group"><label>YouTube</label><input type="url" id="edit-yt" value="${p.youtubeLink || ''}"></div>
+            <div class="form-group"><label>Spotify</label><input type="url" id="edit-sp" value="${p.spotifyLink || ''}"></div>
+            <div class="form-group"><label>Website</label><input type="url" id="edit-web" value="${p.websiteLink || ''}"></div>
+            <div class="form-group"><label>Banner Image</label>
+                <input type="file" id="edit-banner" accept="image/*"
+                       style="padding:10px;background:#f5f5f5;border:2px dashed #e0e0e0;border-radius:8px;cursor:pointer;width:100%">
+            </div>
         `;
     } else {
         fields = `
@@ -1384,12 +1508,22 @@ async function saveProfile(e, isArtist) {
     btn.textContent = 'Saving...';
     btn.disabled = true;
 
-    // Upload new profile picture if provided
     let profileImageUrl = await uploadImageFile(document.getElementById('edit-pic'));
+    let bannerImageUrl = null;
+    if (isArtist) {
+        bannerImageUrl = await uploadImageFile(document.getElementById('edit-banner'));
+    }
 
     let payload = {};
     if (isArtist) {
         payload.stageName = document.getElementById('edit-name').value;
+        payload.genre = document.getElementById('edit-genre').value;
+        payload.instagramLink = document.getElementById('edit-ig').value;
+        payload.twitterLink = document.getElementById('edit-tw').value;
+        payload.youtubeLink = document.getElementById('edit-yt').value;
+        payload.spotifyLink = document.getElementById('edit-sp').value;
+        payload.websiteLink = document.getElementById('edit-web').value;
+        if (bannerImageUrl) payload.bannerImageUrl = bannerImageUrl;
     } else {
         payload.fullName = document.getElementById('edit-name').value;
     }

@@ -54,6 +54,14 @@ public class ArtistRestController {
             existing.setYoutubeLink(artist.getYoutubeLink());
         if (artist.getSpotifyLink() != null)
             existing.setSpotifyLink(artist.getSpotifyLink());
+        if (artist.getTwitterLink() != null)
+            existing.setTwitterLink(artist.getTwitterLink());
+        if (artist.getWebsiteLink() != null)
+            existing.setWebsiteLink(artist.getWebsiteLink());
+        if (artist.getProfileImageUrl() != null)
+            existing.setProfileImageUrl(artist.getProfileImageUrl());
+        if (artist.getBannerImageUrl() != null)
+            existing.setBannerImageUrl(artist.getBannerImageUrl());
         if (artist.getPasswordHash() != null)
             existing.setPasswordHash(artist.getPasswordHash());
         return ResponseEntity.ok(Map.of("success", (Object) artistService.updateProfile(existing)));
