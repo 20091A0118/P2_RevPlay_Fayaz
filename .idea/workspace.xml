@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="91abb9dd-2e1e-46fd-b036-97cfa366809b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/apiguardian_api.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit_jupiter.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit_jupiter_api.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit_jupiter_engine.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit_platform_commons.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit_platform_engine.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit_platform_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/ojdbc11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/opentest4j.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RevPlay.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application.log.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/apiguardian-api-1.1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-jupiter-api-5.10.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-jupiter-engine-5.10.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-platform-commons-1.10.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-platform-engine-1.10.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-platform-launcher-1.10.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ojdbc11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/opentest4j-1.3.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/controller/ArtistController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/controller/PodcastController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/controller/UserAccountController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/AlbumDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/ArtistDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/FavoriteDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/GenreDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/IAlbumDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/IArtistDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/IFavoriteDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/IGenreDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/IListeningHistoryDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/IPlaylistDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/IPodcastDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/IPodcastEpisodeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/ISongDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/IUserAccountDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/ListeningHistoryDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/PlaylistDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/PodcastDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/PodcastEpisodeDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/SongDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/dao/UserAccountDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/exception/RevPlayException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/model/Album.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/model/ArtistAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/model/FavoriteSong.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/model/Genre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/model/ListeningHistory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/model/Playlist.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/model/PlaylistSong.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/model/Podcast.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/model/PodcastEpisode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/model/Song.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/model/UserAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/AlbumServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/ArtistServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/GenreServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/IAlbumService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/IArtistService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/IGenreService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/IPlaylistService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/IPodcastEpisodeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/IPodcastService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/ISongService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/IUserAccountService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/PlaylistServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/PodcastEpisodeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/PodcastServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/SongServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/service/UserAccountServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/util/JDBCUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revplay/util/LoggerUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/controller/ArtistController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/controller/PodcastController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/controller/UserAccountController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/AlbumDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/ArtistDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/FavoriteDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/GenreDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/IAlbumDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/IArtistDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/IFavoriteDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/IGenreDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/IListeningHistoryDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/IPlaylistDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/IPodcastDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/IPodcastEpisodeDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/ISongDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/IUserAccountDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/ListeningHistoryDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/PlaylistDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/PodcastDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/PodcastEpisodeDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/SongDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/dao/UserAccountDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/exception/RevPlayException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/main/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/model/Album.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/model/ArtistAccount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/model/FavoriteSong.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/model/Genre.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/model/ListeningHistory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/model/Playlist.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/model/PlaylistSong.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/model/Podcast.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/model/PodcastEpisode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/model/Song.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/model/UserAccount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/AlbumServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/ArtistServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/GenreServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/IAlbumService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/IArtistService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/IGenreService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/IPlaylistService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/IPodcastEpisodeService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/IPodcastService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/ISongService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/IUserAccountService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/PlaylistServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/PodcastEpisodeServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/PodcastServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/SongServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/service/UserAccountServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/util/JDBCUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revplay/util/LoggerUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/ManualTestRunner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/AlbumServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/ArtistServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/GenreServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/MockAlbumDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/MockArtistDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/MockGenreDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/MockPlaylistDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/MockPodcastDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/MockSongDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/MockUserAccountDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/PlaylistServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/PodcastServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/SongServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/revplay/service/UserAccountServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/ManualTestRunner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/AlbumServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/ArtistServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/GenreServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/MockAlbumDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/MockArtistDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/MockGenreDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/MockPlaylistDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/MockPodcastDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/MockSongDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/MockUserAccountDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/PlaylistServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/PodcastServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/SongServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/revplay/service/UserAccountServiceTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;20091A0118&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/20091A0118/RevPlay.git&quot;,
+    &quot;accountId&quot;: &quot;0c65eb66-9c54-413a-b75f-c191cef83652&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="3ANESye5n7Pujj3S03IQti4GYEq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.IUserAccountRepositoryTest.testRepositoryIsNotNull.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/91630/Documents/Revature/Project_RevPlay/Prj-2/Gravity/Working One fully/New UI/RevPlay"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="IUserAccountRepositoryTest.testRepositoryIsNotNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="revplay" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.revplay.app.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.revplay.app.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.revplay.app.repository.IUserAccountRepositoryTest" />
+      <option name="METHOD_NAME" value="testRepositoryIsNotNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.IUserAccountRepositoryTest.testRepositoryIsNotNull" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="91abb9dd-2e1e-46fd-b036-97cfa366809b" name="Changes" comment="" />
+      <created>1772424632127</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772424632127</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('RevPlay - My Playlists')}"></head>
+
+<body>
+    <div id="app-page" class="app-layout">
+        <aside th:replace="~{fragments :: sidebar('playlists')}"></aside>
+        <main class="main-content">
+            <div th:replace="~{fragments :: topbar}"></div>
+            <div class="content-area animate-in" id="content-area">
+                <div class="page-header">
+                    <div>
+                        <h2>My Playlists</h2>
+                    </div>
+                    <button class="btn btn-primary btn-sm"
+                        onclick="showToast('Create functionality coming soon in MPA mode!', 'info')">➕ Create
+                        Playlist</button>
+                </div>
+                <div class="empty-state" th:if="${playlists == null || playlists.empty}">
+                    <span class="icon">📋</span>
+                    <h3>No playlists yet</h3>
+                    <p>Create a playlist to start organizing your music</p>
+                </div>
+                <div class="cards-grid" th:unless="${playlists == null || playlists.empty}">
+                    <div th:each="p : ${playlists}" class="card">
+                        <div class="card-image" style="background:linear-gradient(135deg, #4f46e5, #818cf8)">📋</div>
+                        <div class="card-title" th:text="${p.name}">Playlist Name</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:replace="~{fragments :: player}"></div>
+    </div>
+    <div th:replace="~{fragments :: scripts}"></div>
+</body>
+
+</html>

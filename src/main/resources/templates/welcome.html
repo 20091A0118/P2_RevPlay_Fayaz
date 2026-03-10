@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Welcome to RevPlay')}"></head>
+
+<style>
+    .welcome-page {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #050510;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .welcome-page::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: url('/images/bg-welcome-new.jpg') center/cover no-repeat;
+        opacity: 0.20;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .welcome-page>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    .welcome-logo {
+        font-size: 64px;
+        margin-bottom: 16px;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    .welcome-title {
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 12px;
+        background: linear-gradient(135deg, #60a5fa, #10b981);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .welcome-subtitle {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 600px;
+        margin-bottom: 48px;
+        line-height: 1.6;
+    }
+
+    .portal-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .portal-card {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-xl);
+        padding: 40px;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+    .portal-card:hover {
+        transform: translateY(-10px);
+        background: rgba(0, 0, 0, 0.6);
+        border-color: #3b82f6;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .portal-icon {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .portal-name {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #ffffff;
+    }
+
+    .portal-desc {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .welcome-footer {
+        position: absolute;
+        bottom: 40px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+        .portal-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .welcome-title {
+            font-size: 32px;
+        }
+    }
+</style>
+
+<body class="welcome-page">
+    <div class="welcome-logo">🎵</div>
+    <h1 class="welcome-title">RevPlay</h1>
+    <p class="welcome-subtitle">Your premium destination for music, albums, and podcasts. Join our community of
+        listeners and creators.</p>
+
+    <div class="portal-grid">
+        <a th:href="@{/login(role='user',portal='true')}" class="portal-card animate-in" style="animation-delay: 0.1s">
+            <div class="portal-icon">🎧</div>
+            <div class="portal-name">Listener Portal</div>
+            <p class="portal-desc">Discover, play, and organize your music library.</p>
+        </a>
+        <a th:href="@{/login(role='artist',portal='true')}" class="portal-card animate-in"
+            style="animation-delay: 0.2s">
+            <div class="portal-icon">🎤</div>
+            <div class="portal-name">Artist Portal</div>
+            <p class="portal-desc">Upload songs, manage albums, and reach your fans.</p>
+        </a>
+    </div>
+
+    <div class="welcome-footer">
+        &copy; 2026 RevPlay • Designed for Excellence
+    </div>
+
+    <div th:replace="~{fragments :: scripts}"></div>
+</body>
+
+</html>

@@ -1,0 +1,2410 @@
+2026-03-05 11:37:06 [HikariPool-1 connection adder] INFO  oracle.jdbc - entering args (oracle.jdbc.internal.AbstractConnectionBuilder$1@1e08098c)
+2026-03-05 11:37:07 [HikariPool-1 connection adder] INFO  oracle.jdbc - traceId=5C221AA6. 
+2026-03-05 11:37:07 [HikariPool-1 connection adder] INFO  oracle.jdbc - throwing
+java.sql.SQLRecoverableException: ORA-17820: The network adapter could not establish the connection. (CONNECTION_ID=PGIy1e8sTFGr5/Fm41+28g==)
+https://docs.oracle.com/error-help/db/ora-17820/
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:1398) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:991) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1157) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:104) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:825) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:651) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:733) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712) ~[HikariCP-5.0.1.jar:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+Caused by: oracle.net.ns.NetException: ORA-17820: The network adapter could not establish the connection. (CONNECTION_ID=PGIy1e8sTFGr5/Fm41+28g==)
+https://docs.oracle.com/error-help/db/ora-17820/
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:779) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+Caused by: java.io.IOException: 
+	at oracle.net.nt.TcpNTAdapter.establishSocket(TcpNTAdapter.java:325) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:222) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:1144) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:718) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+Caused by: java.net.SocketException: Network is unreachable: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682) ~[?:?]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:973) ~[?:?]
+	at oracle.net.nt.TimeoutSocketChannel.initializeSocketChannel(TimeoutSocketChannel.java:246) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TimeoutSocketChannel.connect(TimeoutSocketChannel.java:203) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TimeoutSocketChannel.<init>(TimeoutSocketChannel.java:170) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.establishSocket(TcpNTAdapter.java:256) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:222) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:1144) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:718) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+2026-03-05 11:37:07 [HikariPool-1 connection adder] INFO  oracle.jdbc - properties={LOCALE=en_IN, DriverVersion=23.3.0.23.09, java.library.path: =C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\app\91630\product\21c\dbhomeXE\bin;C:\oracle\product\10.2.0\db_5\bin;C:\oracle\product\10.2.0\db_3\bin;C:\oracle\product\10.2.0\db_2\bin;C:\Python314\Scripts\;C:\Python314\;D:\oracle\product\10.2.0\db_1\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\MiKTeX 2.8\miktex\bin;C:\Program Files (x86)\Common Files\Intel\Shared Files\fortran\bin\ia32;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Java\jdk-21\bin;C:\Program Files\Apache\Maven\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\91630\apache-maven\bin;C:\Users\91630\AppData\Local\Programs\Antigravity\bin;., java.class.path: =C:\Users\91630\Documents\Revature\Project_RevPlay\Prj-2\Gravity\Working One fully\New UI\RevPlay\target\classes;C:\Users\91630\.m2\repository\org\springframework\boot\spring-boot\3.2.3\spring-boot-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.2.3\spring-boot-autoconfigure-3.2.3.jar;C:\Users\91630\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\91630\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.4\jackson-datatype-jdk8-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.4\jackson-datatype-jsr310-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.4\jackson-module-parameter-names-2.15.4.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.19\tomcat-embed-core-10.1.19.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.19\tomcat-embed-el-10.1.19.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.19\tomcat-embed-websocket-10.1.19.jar;C:\Users\91630\.m2\repository\org\springframework\spring-web\6.1.4\spring-web-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-beans\6.1.4\spring-beans-6.1.4.jar;C:\Users\91630\.m2\repository\io\micrometer\micrometer-observation\1.12.3\micrometer-observation-1.12.3.jar;C:\Users\91630\.m2\repository\io\micrometer\micrometer-commons\1.12.3\micrometer-commons-1.12.3.jar;C:\Users\91630\.m2\repository\org\springframework\spring-webmvc\6.1.4\spring-webmvc-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-context\6.1.4\spring-context-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-expression\6.1.4\spring-expression-6.1.4.jar;C:\Users\91630\.m2\repository\org\thymeleaf\thymeleaf-spring6\3.1.2.RELEASE\thymeleaf-spring6-3.1.2.RELEASE.jar;C:\Users\91630\.m2\repository\org\thymeleaf\thymeleaf\3.1.2.RELEASE\thymeleaf-3.1.2.RELEASE.jar;C:\Users\91630\.m2\repository\org\attoparser\attoparser\2.0.7.RELEASE\attoparser-2.0.7.RELEASE.jar;C:\Users\91630\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\91630\.m2\repository\org\slf4j\slf4j-api\2.0.12\slf4j-api-2.0.12.jar;C:\Users\91630\.m2\repository\org\springframework\spring-aop\6.1.4\spring-aop-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-config\6.2.2\spring-security-config-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-core\6.2.2\spring-security-core-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-crypto\6.2.2\spring-security-crypto-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-web\6.2.2\spring-security-web-6.2.2.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-api\0.12.5\jjwt-api-0.12.5.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-impl\0.12.5\jjwt-impl-0.12.5.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-jackson\0.12.5\jjwt-jackson-0.12.5.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.4\jackson-databind-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.4\jackson-annotations-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.4\jackson-core-2.15.4.jar;C:\Users\91630\.m2\repository\org\aspectj\aspectjweaver\1.9.21\aspectjweaver-1.9.21.jar;C:\Users\91630\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\91630\.m2\repository\org\springframework\spring-jdbc\6.1.4\spring-jdbc-6.1.4.jar;C:\Users\91630\.m2\repository\org\hibernate\orm\hibernate-core\6.4.4.Final\hibernate-core-6.4.4.Final.jar;C:\Users\91630\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\91630\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\91630\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\91630\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\91630\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\91630\.m2\repository\com\fasterxml\classmate\1.6.0\classmate-1.6.0.jar;C:\Users\91630\.m2\repository\net\bytebuddy\byte-buddy\1.14.12\byte-buddy-1.14.12.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.4\jaxb-runtime-4.0.4.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.4\jaxb-core-4.0.4.jar;C:\Users\91630\.m2\repository\org\eclipse\angus\angus-activation\2.0.1\angus-activation-2.0.1.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\txw2\4.0.4\txw2-4.0.4.jar;C:\Users\91630\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\91630\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\91630\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\91630\.m2\repository\org\springframework\data\spring-data-jpa\3.2.3\spring-data-jpa-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\data\spring-data-commons\3.2.3\spring-data-commons-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\spring-orm\6.1.4\spring-orm-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-tx\6.1.4\spring-tx-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-aspects\6.1.4\spring-aspects-6.1.4.jar;C:\Users\91630\.m2\repository\com\oracle\database\jdbc\ojdbc11\23.3.0.23.09\ojdbc11-23.3.0.23.09.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-slf4j2-impl\2.21.1\log4j-slf4j2-impl-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-core\2.21.1\log4j-core-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-jul\2.21.1\log4j-jul-2.21.1.jar;C:\Users\91630\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.1\jakarta.xml.bind-api-4.0.1.jar;C:\Users\91630\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.2\jakarta.activation-api-2.1.2.jar;C:\Users\91630\.m2\repository\org\springframework\spring-core\6.1.4\spring-core-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-jcl\6.1.4\spring-jcl-6.1.4.jar, java.version: =21.0.5}. 
+2026-03-05 11:37:07 [HikariPool-1 connection adder] INFO  oracle.jdbc - entering args (oracle.jdbc.internal.AbstractConnectionBuilder$1@7db1b11)
+2026-03-05 11:37:07 [HikariPool-1 connection adder] INFO  oracle.jdbc - traceId=24E707. 
+2026-03-05 11:37:07 [HikariPool-1 connection adder] INFO  oracle.jdbc - throwing
+java.sql.SQLRecoverableException: ORA-17820: The network adapter could not establish the connection. (CONNECTION_ID=WqsDFjt5QeyrHQVh6lz8Iw==)
+https://docs.oracle.com/error-help/db/ora-17820/
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:1398) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:991) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1157) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:104) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:825) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:651) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:733) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712) ~[HikariCP-5.0.1.jar:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+Caused by: oracle.net.ns.NetException: ORA-17820: The network adapter could not establish the connection. (CONNECTION_ID=WqsDFjt5QeyrHQVh6lz8Iw==)
+https://docs.oracle.com/error-help/db/ora-17820/
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:779) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+Caused by: java.io.IOException: 
+	at oracle.net.nt.TcpNTAdapter.establishSocket(TcpNTAdapter.java:325) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:222) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:1144) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:718) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+Caused by: java.net.SocketException: Network is unreachable: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682) ~[?:?]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:973) ~[?:?]
+	at oracle.net.nt.TimeoutSocketChannel.initializeSocketChannel(TimeoutSocketChannel.java:246) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TimeoutSocketChannel.connect(TimeoutSocketChannel.java:203) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TimeoutSocketChannel.<init>(TimeoutSocketChannel.java:170) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.establishSocket(TcpNTAdapter.java:256) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:222) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:1144) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:718) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+2026-03-05 11:37:08 [HikariPool-1 connection adder] INFO  oracle.jdbc - properties={LOCALE=en_IN, DriverVersion=23.3.0.23.09, java.library.path: =C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\app\91630\product\21c\dbhomeXE\bin;C:\oracle\product\10.2.0\db_5\bin;C:\oracle\product\10.2.0\db_3\bin;C:\oracle\product\10.2.0\db_2\bin;C:\Python314\Scripts\;C:\Python314\;D:\oracle\product\10.2.0\db_1\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\MiKTeX 2.8\miktex\bin;C:\Program Files (x86)\Common Files\Intel\Shared Files\fortran\bin\ia32;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Java\jdk-21\bin;C:\Program Files\Apache\Maven\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\91630\apache-maven\bin;C:\Users\91630\AppData\Local\Programs\Antigravity\bin;., java.class.path: =C:\Users\91630\Documents\Revature\Project_RevPlay\Prj-2\Gravity\Working One fully\New UI\RevPlay\target\classes;C:\Users\91630\.m2\repository\org\springframework\boot\spring-boot\3.2.3\spring-boot-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.2.3\spring-boot-autoconfigure-3.2.3.jar;C:\Users\91630\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\91630\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.4\jackson-datatype-jdk8-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.4\jackson-datatype-jsr310-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.4\jackson-module-parameter-names-2.15.4.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.19\tomcat-embed-core-10.1.19.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.19\tomcat-embed-el-10.1.19.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.19\tomcat-embed-websocket-10.1.19.jar;C:\Users\91630\.m2\repository\org\springframework\spring-web\6.1.4\spring-web-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-beans\6.1.4\spring-beans-6.1.4.jar;C:\Users\91630\.m2\repository\io\micrometer\micrometer-observation\1.12.3\micrometer-observation-1.12.3.jar;C:\Users\91630\.m2\repository\io\micrometer\micrometer-commons\1.12.3\micrometer-commons-1.12.3.jar;C:\Users\91630\.m2\repository\org\springframework\spring-webmvc\6.1.4\spring-webmvc-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-context\6.1.4\spring-context-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-expression\6.1.4\spring-expression-6.1.4.jar;C:\Users\91630\.m2\repository\org\thymeleaf\thymeleaf-spring6\3.1.2.RELEASE\thymeleaf-spring6-3.1.2.RELEASE.jar;C:\Users\91630\.m2\repository\org\thymeleaf\thymeleaf\3.1.2.RELEASE\thymeleaf-3.1.2.RELEASE.jar;C:\Users\91630\.m2\repository\org\attoparser\attoparser\2.0.7.RELEASE\attoparser-2.0.7.RELEASE.jar;C:\Users\91630\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\91630\.m2\repository\org\slf4j\slf4j-api\2.0.12\slf4j-api-2.0.12.jar;C:\Users\91630\.m2\repository\org\springframework\spring-aop\6.1.4\spring-aop-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-config\6.2.2\spring-security-config-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-core\6.2.2\spring-security-core-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-crypto\6.2.2\spring-security-crypto-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-web\6.2.2\spring-security-web-6.2.2.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-api\0.12.5\jjwt-api-0.12.5.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-impl\0.12.5\jjwt-impl-0.12.5.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-jackson\0.12.5\jjwt-jackson-0.12.5.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.4\jackson-databind-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.4\jackson-annotations-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.4\jackson-core-2.15.4.jar;C:\Users\91630\.m2\repository\org\aspectj\aspectjweaver\1.9.21\aspectjweaver-1.9.21.jar;C:\Users\91630\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\91630\.m2\repository\org\springframework\spring-jdbc\6.1.4\spring-jdbc-6.1.4.jar;C:\Users\91630\.m2\repository\org\hibernate\orm\hibernate-core\6.4.4.Final\hibernate-core-6.4.4.Final.jar;C:\Users\91630\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\91630\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\91630\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\91630\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\91630\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\91630\.m2\repository\com\fasterxml\classmate\1.6.0\classmate-1.6.0.jar;C:\Users\91630\.m2\repository\net\bytebuddy\byte-buddy\1.14.12\byte-buddy-1.14.12.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.4\jaxb-runtime-4.0.4.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.4\jaxb-core-4.0.4.jar;C:\Users\91630\.m2\repository\org\eclipse\angus\angus-activation\2.0.1\angus-activation-2.0.1.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\txw2\4.0.4\txw2-4.0.4.jar;C:\Users\91630\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\91630\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\91630\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\91630\.m2\repository\org\springframework\data\spring-data-jpa\3.2.3\spring-data-jpa-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\data\spring-data-commons\3.2.3\spring-data-commons-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\spring-orm\6.1.4\spring-orm-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-tx\6.1.4\spring-tx-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-aspects\6.1.4\spring-aspects-6.1.4.jar;C:\Users\91630\.m2\repository\com\oracle\database\jdbc\ojdbc11\23.3.0.23.09\ojdbc11-23.3.0.23.09.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-slf4j2-impl\2.21.1\log4j-slf4j2-impl-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-core\2.21.1\log4j-core-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-jul\2.21.1\log4j-jul-2.21.1.jar;C:\Users\91630\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.1\jakarta.xml.bind-api-4.0.1.jar;C:\Users\91630\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.2\jakarta.activation-api-2.1.2.jar;C:\Users\91630\.m2\repository\org\springframework\spring-core\6.1.4\spring-core-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-jcl\6.1.4\spring-jcl-6.1.4.jar, java.version: =21.0.5}. 
+2026-03-05 11:37:09 [HikariPool-1 connection adder] INFO  oracle.jdbc - entering args (oracle.jdbc.internal.AbstractConnectionBuilder$1@3ad480e0)
+2026-03-05 11:37:09 [HikariPool-1 connection adder] INFO  oracle.jdbc - traceId=65F9364E. 
+2026-03-05 11:37:09 [HikariPool-1 connection adder] INFO  oracle.jdbc - throwing
+java.sql.SQLRecoverableException: ORA-17820: The network adapter could not establish the connection. (CONNECTION_ID=cQSFOXwDRiy6pLQRCehEaw==)
+https://docs.oracle.com/error-help/db/ora-17820/
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:1398) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:991) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1157) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:104) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:825) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:651) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:733) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712) ~[HikariCP-5.0.1.jar:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+Caused by: oracle.net.ns.NetException: ORA-17820: The network adapter could not establish the connection. (CONNECTION_ID=cQSFOXwDRiy6pLQRCehEaw==)
+https://docs.oracle.com/error-help/db/ora-17820/
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:779) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+Caused by: java.io.IOException: 
+	at oracle.net.nt.TcpNTAdapter.establishSocket(TcpNTAdapter.java:325) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:222) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:1144) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:718) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+Caused by: java.net.SocketException: Network is unreachable: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682) ~[?:?]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:973) ~[?:?]
+	at oracle.net.nt.TimeoutSocketChannel.initializeSocketChannel(TimeoutSocketChannel.java:246) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TimeoutSocketChannel.connect(TimeoutSocketChannel.java:203) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TimeoutSocketChannel.<init>(TimeoutSocketChannel.java:170) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.establishSocket(TcpNTAdapter.java:256) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:222) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:1144) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:718) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+2026-03-05 11:37:10 [HikariPool-1 connection adder] INFO  oracle.jdbc - properties={LOCALE=en_IN, DriverVersion=23.3.0.23.09, java.library.path: =C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\app\91630\product\21c\dbhomeXE\bin;C:\oracle\product\10.2.0\db_5\bin;C:\oracle\product\10.2.0\db_3\bin;C:\oracle\product\10.2.0\db_2\bin;C:\Python314\Scripts\;C:\Python314\;D:\oracle\product\10.2.0\db_1\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\MiKTeX 2.8\miktex\bin;C:\Program Files (x86)\Common Files\Intel\Shared Files\fortran\bin\ia32;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Java\jdk-21\bin;C:\Program Files\Apache\Maven\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\91630\apache-maven\bin;C:\Users\91630\AppData\Local\Programs\Antigravity\bin;., java.class.path: =C:\Users\91630\Documents\Revature\Project_RevPlay\Prj-2\Gravity\Working One fully\New UI\RevPlay\target\classes;C:\Users\91630\.m2\repository\org\springframework\boot\spring-boot\3.2.3\spring-boot-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.2.3\spring-boot-autoconfigure-3.2.3.jar;C:\Users\91630\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\91630\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.4\jackson-datatype-jdk8-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.4\jackson-datatype-jsr310-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.4\jackson-module-parameter-names-2.15.4.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.19\tomcat-embed-core-10.1.19.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.19\tomcat-embed-el-10.1.19.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.19\tomcat-embed-websocket-10.1.19.jar;C:\Users\91630\.m2\repository\org\springframework\spring-web\6.1.4\spring-web-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-beans\6.1.4\spring-beans-6.1.4.jar;C:\Users\91630\.m2\repository\io\micrometer\micrometer-observation\1.12.3\micrometer-observation-1.12.3.jar;C:\Users\91630\.m2\repository\io\micrometer\micrometer-commons\1.12.3\micrometer-commons-1.12.3.jar;C:\Users\91630\.m2\repository\org\springframework\spring-webmvc\6.1.4\spring-webmvc-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-context\6.1.4\spring-context-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-expression\6.1.4\spring-expression-6.1.4.jar;C:\Users\91630\.m2\repository\org\thymeleaf\thymeleaf-spring6\3.1.2.RELEASE\thymeleaf-spring6-3.1.2.RELEASE.jar;C:\Users\91630\.m2\repository\org\thymeleaf\thymeleaf\3.1.2.RELEASE\thymeleaf-3.1.2.RELEASE.jar;C:\Users\91630\.m2\repository\org\attoparser\attoparser\2.0.7.RELEASE\attoparser-2.0.7.RELEASE.jar;C:\Users\91630\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\91630\.m2\repository\org\slf4j\slf4j-api\2.0.12\slf4j-api-2.0.12.jar;C:\Users\91630\.m2\repository\org\springframework\spring-aop\6.1.4\spring-aop-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-config\6.2.2\spring-security-config-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-core\6.2.2\spring-security-core-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-crypto\6.2.2\spring-security-crypto-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-web\6.2.2\spring-security-web-6.2.2.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-api\0.12.5\jjwt-api-0.12.5.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-impl\0.12.5\jjwt-impl-0.12.5.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-jackson\0.12.5\jjwt-jackson-0.12.5.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.4\jackson-databind-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.4\jackson-annotations-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.4\jackson-core-2.15.4.jar;C:\Users\91630\.m2\repository\org\aspectj\aspectjweaver\1.9.21\aspectjweaver-1.9.21.jar;C:\Users\91630\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\91630\.m2\repository\org\springframework\spring-jdbc\6.1.4\spring-jdbc-6.1.4.jar;C:\Users\91630\.m2\repository\org\hibernate\orm\hibernate-core\6.4.4.Final\hibernate-core-6.4.4.Final.jar;C:\Users\91630\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\91630\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\91630\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\91630\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\91630\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\91630\.m2\repository\com\fasterxml\classmate\1.6.0\classmate-1.6.0.jar;C:\Users\91630\.m2\repository\net\bytebuddy\byte-buddy\1.14.12\byte-buddy-1.14.12.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.4\jaxb-runtime-4.0.4.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.4\jaxb-core-4.0.4.jar;C:\Users\91630\.m2\repository\org\eclipse\angus\angus-activation\2.0.1\angus-activation-2.0.1.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\txw2\4.0.4\txw2-4.0.4.jar;C:\Users\91630\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\91630\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\91630\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\91630\.m2\repository\org\springframework\data\spring-data-jpa\3.2.3\spring-data-jpa-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\data\spring-data-commons\3.2.3\spring-data-commons-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\spring-orm\6.1.4\spring-orm-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-tx\6.1.4\spring-tx-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-aspects\6.1.4\spring-aspects-6.1.4.jar;C:\Users\91630\.m2\repository\com\oracle\database\jdbc\ojdbc11\23.3.0.23.09\ojdbc11-23.3.0.23.09.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-slf4j2-impl\2.21.1\log4j-slf4j2-impl-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-core\2.21.1\log4j-core-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-jul\2.21.1\log4j-jul-2.21.1.jar;C:\Users\91630\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.1\jakarta.xml.bind-api-4.0.1.jar;C:\Users\91630\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.2\jakarta.activation-api-2.1.2.jar;C:\Users\91630\.m2\repository\org\springframework\spring-core\6.1.4\spring-core-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-jcl\6.1.4\spring-jcl-6.1.4.jar, java.version: =21.0.5}. 
+2026-03-05 11:37:11 [HikariPool-1 connection adder] INFO  oracle.jdbc - entering args (oracle.jdbc.internal.AbstractConnectionBuilder$1@7032e05a)
+2026-03-05 11:37:11 [HikariPool-1 connection adder] INFO  oracle.jdbc - traceId=553C0E06. 
+2026-03-05 11:37:11 [HikariPool-1 connection adder] INFO  oracle.jdbc - throwing
+java.sql.SQLRecoverableException: ORA-17820: The network adapter could not establish the connection. (CONNECTION_ID=4x3iVR/6RiCZapRhCR0Bpw==)
+https://docs.oracle.com/error-help/db/ora-17820/
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:1398) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:991) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1157) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:104) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:825) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:651) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:733) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:712) ~[HikariCP-5.0.1.jar:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?]
+Caused by: oracle.net.ns.NetException: ORA-17820: The network adapter could not establish the connection. (CONNECTION_ID=4x3iVR/6RiCZapRhCR0Bpw==)
+https://docs.oracle.com/error-help/db/ora-17820/
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:779) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+Caused by: java.io.IOException: 
+	at oracle.net.nt.TcpNTAdapter.establishSocket(TcpNTAdapter.java:325) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:222) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:1144) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:718) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+Caused by: java.net.SocketException: Network is unreachable: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682) ~[?:?]
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:973) ~[?:?]
+	at oracle.net.nt.TimeoutSocketChannel.initializeSocketChannel(TimeoutSocketChannel.java:246) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TimeoutSocketChannel.connect(TimeoutSocketChannel.java:203) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TimeoutSocketChannel.<init>(TimeoutSocketChannel.java:170) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.establishSocket(TcpNTAdapter.java:256) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:222) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:1144) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:718) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:707) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:938) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:327) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3185) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:926) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	... 14 more
+2026-03-05 11:37:11 [HikariPool-1 connection adder] INFO  oracle.jdbc - properties={LOCALE=en_IN, DriverVersion=23.3.0.23.09, java.library.path: =C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\app\91630\product\21c\dbhomeXE\bin;C:\oracle\product\10.2.0\db_5\bin;C:\oracle\product\10.2.0\db_3\bin;C:\oracle\product\10.2.0\db_2\bin;C:\Python314\Scripts\;C:\Python314\;D:\oracle\product\10.2.0\db_1\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\MiKTeX 2.8\miktex\bin;C:\Program Files (x86)\Common Files\Intel\Shared Files\fortran\bin\ia32;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Java\jdk-21\bin;C:\Program Files\Apache\Maven\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\91630\apache-maven\bin;C:\Users\91630\AppData\Local\Programs\Antigravity\bin;., java.class.path: =C:\Users\91630\Documents\Revature\Project_RevPlay\Prj-2\Gravity\Working One fully\New UI\RevPlay\target\classes;C:\Users\91630\.m2\repository\org\springframework\boot\spring-boot\3.2.3\spring-boot-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.2.3\spring-boot-autoconfigure-3.2.3.jar;C:\Users\91630\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\91630\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.4\jackson-datatype-jdk8-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.4\jackson-datatype-jsr310-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.4\jackson-module-parameter-names-2.15.4.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.19\tomcat-embed-core-10.1.19.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.19\tomcat-embed-el-10.1.19.jar;C:\Users\91630\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.19\tomcat-embed-websocket-10.1.19.jar;C:\Users\91630\.m2\repository\org\springframework\spring-web\6.1.4\spring-web-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-beans\6.1.4\spring-beans-6.1.4.jar;C:\Users\91630\.m2\repository\io\micrometer\micrometer-observation\1.12.3\micrometer-observation-1.12.3.jar;C:\Users\91630\.m2\repository\io\micrometer\micrometer-commons\1.12.3\micrometer-commons-1.12.3.jar;C:\Users\91630\.m2\repository\org\springframework\spring-webmvc\6.1.4\spring-webmvc-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-context\6.1.4\spring-context-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-expression\6.1.4\spring-expression-6.1.4.jar;C:\Users\91630\.m2\repository\org\thymeleaf\thymeleaf-spring6\3.1.2.RELEASE\thymeleaf-spring6-3.1.2.RELEASE.jar;C:\Users\91630\.m2\repository\org\thymeleaf\thymeleaf\3.1.2.RELEASE\thymeleaf-3.1.2.RELEASE.jar;C:\Users\91630\.m2\repository\org\attoparser\attoparser\2.0.7.RELEASE\attoparser-2.0.7.RELEASE.jar;C:\Users\91630\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\91630\.m2\repository\org\slf4j\slf4j-api\2.0.12\slf4j-api-2.0.12.jar;C:\Users\91630\.m2\repository\org\springframework\spring-aop\6.1.4\spring-aop-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-config\6.2.2\spring-security-config-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-core\6.2.2\spring-security-core-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-crypto\6.2.2\spring-security-crypto-6.2.2.jar;C:\Users\91630\.m2\repository\org\springframework\security\spring-security-web\6.2.2\spring-security-web-6.2.2.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-api\0.12.5\jjwt-api-0.12.5.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-impl\0.12.5\jjwt-impl-0.12.5.jar;C:\Users\91630\.m2\repository\io\jsonwebtoken\jjwt-jackson\0.12.5\jjwt-jackson-0.12.5.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.4\jackson-databind-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.4\jackson-annotations-2.15.4.jar;C:\Users\91630\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.4\jackson-core-2.15.4.jar;C:\Users\91630\.m2\repository\org\aspectj\aspectjweaver\1.9.21\aspectjweaver-1.9.21.jar;C:\Users\91630\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\91630\.m2\repository\org\springframework\spring-jdbc\6.1.4\spring-jdbc-6.1.4.jar;C:\Users\91630\.m2\repository\org\hibernate\orm\hibernate-core\6.4.4.Final\hibernate-core-6.4.4.Final.jar;C:\Users\91630\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\91630\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\91630\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\91630\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\91630\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\91630\.m2\repository\com\fasterxml\classmate\1.6.0\classmate-1.6.0.jar;C:\Users\91630\.m2\repository\net\bytebuddy\byte-buddy\1.14.12\byte-buddy-1.14.12.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.4\jaxb-runtime-4.0.4.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.4\jaxb-core-4.0.4.jar;C:\Users\91630\.m2\repository\org\eclipse\angus\angus-activation\2.0.1\angus-activation-2.0.1.jar;C:\Users\91630\.m2\repository\org\glassfish\jaxb\txw2\4.0.4\txw2-4.0.4.jar;C:\Users\91630\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\91630\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\91630\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\91630\.m2\repository\org\springframework\data\spring-data-jpa\3.2.3\spring-data-jpa-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\data\spring-data-commons\3.2.3\spring-data-commons-3.2.3.jar;C:\Users\91630\.m2\repository\org\springframework\spring-orm\6.1.4\spring-orm-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-tx\6.1.4\spring-tx-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-aspects\6.1.4\spring-aspects-6.1.4.jar;C:\Users\91630\.m2\repository\com\oracle\database\jdbc\ojdbc11\23.3.0.23.09\ojdbc11-23.3.0.23.09.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-slf4j2-impl\2.21.1\log4j-slf4j2-impl-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-core\2.21.1\log4j-core-2.21.1.jar;C:\Users\91630\.m2\repository\org\apache\logging\log4j\log4j-jul\2.21.1\log4j-jul-2.21.1.jar;C:\Users\91630\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.1\jakarta.xml.bind-api-4.0.1.jar;C:\Users\91630\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.2\jakarta.activation-api-2.1.2.jar;C:\Users\91630\.m2\repository\org\springframework\spring-core\6.1.4\spring-core-6.1.4.jar;C:\Users\91630\.m2\repository\org\springframework\spring-jcl\6.1.4\spring-jcl-6.1.4.jar, java.version: =21.0.5}. 
+2026-03-05 12:31:17 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=57s8ms812µs600ns).
+2026-03-09 09:27:44 [main] INFO  com.revplay.app.RevPlayP2Application - Starting RevPlayP2Application using Java 21.0.5 with PID 6984 (C:\Users\91630\Documents\Revature\Project_RevPlay\Prj-2\Final P2\RevPlay\target\classes started by 91630 in C:\Users\91630\Documents\Revature\Project_RevPlay\Prj-2\Final P2\RevPlay)
+2026-03-09 09:27:44 [main] DEBUG com.revplay.app.RevPlayP2Application - Running with Spring Boot v3.2.3, Spring v6.1.4
+2026-03-09 09:27:44 [main] INFO  com.revplay.app.RevPlayP2Application - No active profile set, falling back to 1 default profile: "default"
+2026-03-09 09:27:45 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-09 09:27:46 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 239 ms. Found 10 JPA repository interfaces.
+2026-03-09 09:27:47 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-09 09:27:47 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-09 09:27:47 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-09 09:27:47 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.19]
+2026-03-09 09:27:47 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-09 09:27:47 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3051 ms
+2026-03-09 09:27:47 [main] DEBUG com.revplay.app.config.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2026-03-09 09:27:47 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-03-09 09:27:48 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-03-09 09:27:48 [main] INFO  org.hibernate.cache.internal.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-03-09 09:27:48 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-09 09:27:48 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-09 09:27:48 [main] WARN  com.zaxxer.hikari.util.DriverDataSource - Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2026-03-09 09:27:52 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@7283877
+2026-03-09 09:27:52 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-09 09:27:53 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: OracleDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-09 09:27:57 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-09 09:28:35 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists album 
+       modify description varchar2(1000 char)
+2026-03-09 09:28:36 [main] WARN  org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table if exists album 
+       modify description varchar2(1000 char)" via JDBC [ORA-22859: invalid modification of columns
+
+https://docs.oracle.com/error-help/db/ora-22859/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table if exists album 
+       modify description varchar2(1000 char)" via JDBC [ORA-22859: invalid modification of columns
+
+https://docs.oracle.com/error-help/db/ora-22859/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:514) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:333) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:286) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[?:?]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:142) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:315) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:450) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1507) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:388) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:364) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) [spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1231) [spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:949) [spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) [spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-3.2.3.jar:3.2.3]
+	at com.revplay.app.RevPlayP2Application.main(RevPlayP2Application.java:10) [classes/:?]
+Caused by: java.sql.SQLException: ORA-22859: invalid modification of columns
+
+https://docs.oracle.com/error-help/db/ora-22859/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:702) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:608) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1330) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:1102) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:456) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:498) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:190) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1368) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:1958) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1594) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2636) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2585) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:334) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	... 38 more
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-22859: invalid modification of columns
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:710) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:608) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1330) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:1102) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:456) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:498) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:190) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1368) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:1958) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1594) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2636) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2585) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:334) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	... 38 more
+2026-03-09 09:28:36 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists artist_account 
+       modify bio varchar2(1000 char)
+2026-03-09 09:28:37 [main] WARN  org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table if exists artist_account 
+       modify bio varchar2(1000 char)" via JDBC [ORA-22859: invalid modification of columns
+
+https://docs.oracle.com/error-help/db/ora-22859/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table if exists artist_account 
+       modify bio varchar2(1000 char)" via JDBC [ORA-22859: invalid modification of columns
+
+https://docs.oracle.com/error-help/db/ora-22859/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:514) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:333) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:286) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[?:?]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:142) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:315) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:450) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1507) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:388) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:364) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) [spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1231) [spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:949) [spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) [spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-3.2.3.jar:3.2.3]
+	at com.revplay.app.RevPlayP2Application.main(RevPlayP2Application.java:10) [classes/:?]
+Caused by: java.sql.SQLException: ORA-22859: invalid modification of columns
+
+https://docs.oracle.com/error-help/db/ora-22859/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:702) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:608) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1330) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:1102) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:456) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:498) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:190) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1368) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:1958) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1594) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2636) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2585) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:334) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	... 38 more
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-22859: invalid modification of columns
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:710) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:608) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1330) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:1102) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:456) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:498) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:190) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1368) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:1958) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1594) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2636) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2585) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:334) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	... 38 more
+2026-03-09 09:28:37 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists podcast 
+       modify description varchar2(255 char)
+2026-03-09 09:28:37 [main] WARN  org.hibernate.tool.schema.internal.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "
+    alter table if exists podcast 
+       modify description varchar2(255 char)" via JDBC [ORA-22859: invalid modification of columns
+
+https://docs.oracle.com/error-help/db/ora-22859/]
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    alter table if exists podcast 
+       modify description varchar2(255 char)" via JDBC [ORA-22859: invalid modification of columns
+
+https://docs.oracle.com/error-help/db/ora-22859/]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:574) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:514) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.migrateTable(AbstractSchemaMigrator.java:333) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:84) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:232) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:117) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:286) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[?:?]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:142) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:315) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:450) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1507) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:388) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:364) ~[spring-orm-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1833) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) [spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) [spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) [spring-beans-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1231) [spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:949) [spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624) [spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) [spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) [spring-boot-3.2.3.jar:3.2.3]
+	at com.revplay.app.RevPlayP2Application.main(RevPlayP2Application.java:10) [classes/:?]
+Caused by: java.sql.SQLException: ORA-22859: invalid modification of columns
+
+https://docs.oracle.com/error-help/db/ora-22859/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:702) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:608) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1330) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:1102) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:456) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:498) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:190) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1368) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:1958) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1594) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2636) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2585) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:334) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	... 38 more
+Caused by: oracle.jdbc.OracleDatabaseException: ORA-22859: invalid modification of columns
+
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:710) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:608) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:1330) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:1102) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:456) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:498) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.doOall8(T4CStatement.java:190) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.T4CStatement.executeForRows(T4CStatement.java:1368) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeSQLStatement(OracleStatement.java:1958) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1594) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.executeInternal(OracleStatement.java:2636) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatement.execute(OracleStatement.java:2585) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at oracle.jdbc.driver.OracleStatementWrapper.execute(OracleStatementWrapper.java:334) ~[ojdbc11-23.3.0.23.09.jar:23.3.0.23.09]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:80) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	... 38 more
+2026-03-09 09:28:44 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-09 09:28:45 [main] INFO  org.springframework.data.jpa.repository.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-09 09:28:46 [main] INFO  org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping - Adding welcome page template: index
+2026-03-09 09:28:46 [main] INFO  org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2388307, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2c7ceffa, org.springframework.security.web.context.SecurityContextHolderFilter@54039b8a, org.springframework.security.web.header.HeaderWriterFilter@2c30bedc, org.springframework.web.filter.CorsFilter@3408de38, org.springframework.security.web.authentication.logout.LogoutFilter@467f47f8, com.revplay.app.config.JwtRequestFilter@5d352de0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3727021e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1e1b4e8b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@369ad283, org.springframework.security.web.session.SessionManagementFilter@568e814c, org.springframework.security.web.access.ExceptionTranslationFilter@a1a7e28, org.springframework.security.web.access.intercept.AuthorizationFilter@55df76ac]
+2026-03-09 09:28:47 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-09 09:28:47 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-03-09 09:28:47 [main] INFO  com.revplay.app.RevPlayP2Application - Started RevPlayP2Application in 64.327 seconds (process running for 66.101)
+2026-03-09 09:28:47 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        genre g1_0
+2026-03-09 09:29:13 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-09 09:29:13 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-09 09:29:13 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-03-09 09:30:24 [http-nio-8080-exec-3] INFO  com.revplay.app.controller.ViewController - welcome method called
+2026-03-09 09:30:26 [http-nio-8080-exec-8] INFO  com.revplay.app.controller.ViewController - login method called
+2026-03-09 09:30:33 [http-nio-8080-exec-2] INFO  com.revplay.app.rest.AuthRestController - loginArtist method called for email: anirudh@gmail.com
+2026-03-09 09:30:33 [http-nio-8080-exec-2] INFO  com.revplay.app.service.ArtistServiceImpl - loginArtist method called in Service for email: anirudh@gmail.com
+2026-03-09 09:30:33 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0 
+    where
+        aa1_0.email=?
+2026-03-09 09:30:34 [http-nio-8080-exec-3] INFO  com.revplay.app.controller.ViewController - home method called
+2026-03-09 09:30:35 [http-nio-8080-exec-7] INFO  com.revplay.app.rest.SongRestController - getAllSongs method called
+2026-03-09 09:30:35 [http-nio-8080-exec-7] INFO  com.revplay.app.service.SongServiceImpl - getAllSongs method called in Service
+2026-03-09 09:30:35 [http-nio-8080-exec-9] INFO  com.revplay.app.rest.AlbumRestController - getAllAlbums method called
+2026-03-09 09:30:35 [http-nio-8080-exec-9] INFO  com.revplay.app.service.AlbumServiceImpl - getAllAlbums method called in Service
+2026-03-09 09:30:35 [http-nio-8080-exec-6] INFO  com.revplay.app.rest.SongRestController - getTopSongs method called with limit: 10
+2026-03-09 09:30:35 [http-nio-8080-exec-6] INFO  com.revplay.app.service.SongServiceImpl - getTopPlayedSongs method called in Service with limit: 10
+2026-03-09 09:30:35 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    order by
+        s1_0.play_count desc 
+    fetch
+        first ? rows only
+2026-03-09 09:30:35 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0
+2026-03-09 09:30:35 [http-nio-8080-exec-7] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:30:35 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:30:36 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:30:36 [http-nio-8080-exec-6] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:30:36 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:30:37 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:30:37 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:30:37 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:30:37 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:30:37 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:30:38 [http-nio-8080-exec-1] INFO  com.revplay.app.rest.PodcastRestController - getAllPodcasts method called
+2026-03-09 09:30:38 [http-nio-8080-exec-1] INFO  com.revplay.app.service.PodcastServiceImpl - getAllPodcasts method called in Service
+2026-03-09 09:30:38 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.podcast_id,
+        p1_0.artist_id,
+        p1_0.category,
+        p1_0.cover_image_url,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.host_name,
+        p1_0.title 
+    from
+        podcast p1_0 
+    order by
+        p1_0.created_at desc
+2026-03-09 09:30:42 [http-nio-8080-exec-4] INFO  com.revplay.app.rest.AlbumRestController - getAllAlbums method called
+2026-03-09 09:30:42 [http-nio-8080-exec-4] INFO  com.revplay.app.service.AlbumServiceImpl - getAllAlbums method called in Service
+2026-03-09 09:30:42 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:30:42 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:30:44 [http-nio-8080-exec-8] INFO  com.revplay.app.rest.AlbumRestController - getAlbumSongs method called for albumId: 43
+2026-03-09 09:30:44 [http-nio-8080-exec-7] INFO  com.revplay.app.rest.AlbumRestController - getAlbumById method called for albumId: 43
+2026-03-09 09:30:44 [http-nio-8080-exec-8] INFO  com.revplay.app.service.SongServiceImpl - getSongsByAlbum method called in Service for albumId: 43
+2026-03-09 09:30:44 [http-nio-8080-exec-7] INFO  com.revplay.app.service.AlbumServiceImpl - getAlbumById method called in Service for albumId: 43
+2026-03-09 09:30:44 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    where
+        s1_0.album_id=?
+2026-03-09 09:30:44 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0 
+    where
+        a1_0.album_id=?
+2026-03-09 09:30:45 [http-nio-8080-exec-8] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:30:45 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:30:45 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:30:45 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:30:45 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:30:52 [http-nio-8080-exec-10] INFO  com.revplay.app.rest.AlbumRestController - getAlbumsByArtist method called for artistId: 62
+2026-03-09 09:30:52 [http-nio-8080-exec-10] INFO  com.revplay.app.service.AlbumServiceImpl - getAlbumsByArtist method called in Service for artistId: 62
+2026-03-09 09:30:52 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0 
+    where
+        a1_0.artist_id=?
+2026-03-09 09:30:53 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:30:55 [http-nio-8080-exec-8] INFO  com.revplay.app.rest.AlbumRestController - getAlbumSongs method called for albumId: 43
+2026-03-09 09:30:55 [http-nio-8080-exec-8] INFO  com.revplay.app.service.SongServiceImpl - getSongsByAlbum method called in Service for albumId: 43
+2026-03-09 09:30:55 [http-nio-8080-exec-7] INFO  com.revplay.app.rest.AlbumRestController - getAlbumById method called for albumId: 43
+2026-03-09 09:30:55 [http-nio-8080-exec-7] INFO  com.revplay.app.service.AlbumServiceImpl - getAlbumById method called in Service for albumId: 43
+2026-03-09 09:30:55 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    where
+        s1_0.album_id=?
+2026-03-09 09:30:55 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0 
+    where
+        a1_0.album_id=?
+2026-03-09 09:30:55 [http-nio-8080-exec-8] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:30:55 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:30:56 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:30:56 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:30:56 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:31:05 [http-nio-8080-exec-6] INFO  com.revplay.app.rest.SongRestController - getAllSongs method called
+2026-03-09 09:31:05 [http-nio-8080-exec-6] INFO  com.revplay.app.service.SongServiceImpl - getAllSongs method called in Service
+2026-03-09 09:31:05 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0
+2026-03-09 09:31:05 [http-nio-8080-exec-6] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:31:05 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:31:06 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:31:06 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:31:08 [http-nio-8080-exec-1] INFO  com.revplay.app.rest.SongRestController - getSongById method called for songId: 121
+2026-03-09 09:31:08 [http-nio-8080-exec-1] INFO  com.revplay.app.service.SongServiceImpl - getSongById method called in Service for songId: 121
+2026-03-09 09:31:09 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    where
+        s1_0.song_id=?
+2026-03-09 09:31:09 [http-nio-8080-exec-1] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:31:09 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:31:10 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:31:10 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:31:15 [http-nio-8080-exec-5] INFO  com.revplay.app.rest.SongRestController - getSongById method called for songId: 161
+2026-03-09 09:31:15 [http-nio-8080-exec-5] INFO  com.revplay.app.service.SongServiceImpl - getSongById method called in Service for songId: 161
+2026-03-09 09:31:15 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    where
+        s1_0.song_id=?
+2026-03-09 09:31:16 [http-nio-8080-exec-5] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:31:16 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:31:16 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:31:17 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:31:24 [http-nio-8080-exec-8] INFO  com.revplay.app.controller.ViewController - welcome method called
+2026-03-09 09:31:26 [http-nio-8080-exec-7] INFO  com.revplay.app.controller.ViewController - login method called
+2026-03-09 09:31:34 [http-nio-8080-exec-8] INFO  com.revplay.app.rest.AuthRestController - loginUser method called for email: dadanfayazali@gmail.com
+2026-03-09 09:31:34 [http-nio-8080-exec-8] INFO  com.revplay.app.service.UserAccountServiceImpl - loginUser method called in Service for email: dadanfayazali@gmail.com
+2026-03-09 09:31:34 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        ua1_0.user_id,
+        ua1_0.bio,
+        ua1_0.created_at,
+        ua1_0.email,
+        ua1_0.full_name,
+        ua1_0.password_hash,
+        ua1_0.password_hint,
+        ua1_0.phone,
+        ua1_0.profile_picture,
+        ua1_0.security_answer_hash,
+        ua1_0.security_question,
+        ua1_0.status 
+    from
+        user_account ua1_0 
+    where
+        ua1_0.email=?
+2026-03-09 09:31:35 [http-nio-8080-exec-4] INFO  com.revplay.app.controller.ViewController - home method called
+2026-03-09 09:31:35 [http-nio-8080-exec-7] INFO  com.revplay.app.rest.SongRestController - getAllSongs method called
+2026-03-09 09:31:35 [http-nio-8080-exec-9] INFO  com.revplay.app.rest.SongRestController - getTopSongs method called with limit: 10
+2026-03-09 09:31:35 [http-nio-8080-exec-9] INFO  com.revplay.app.service.SongServiceImpl - getTopPlayedSongs method called in Service with limit: 10
+2026-03-09 09:31:35 [http-nio-8080-exec-7] INFO  com.revplay.app.service.SongServiceImpl - getAllSongs method called in Service
+2026-03-09 09:31:35 [http-nio-8080-exec-6] INFO  com.revplay.app.rest.AlbumRestController - getAllAlbums method called
+2026-03-09 09:31:35 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    order by
+        s1_0.play_count desc 
+    fetch
+        first ? rows only
+2026-03-09 09:31:35 [http-nio-8080-exec-6] INFO  com.revplay.app.service.AlbumServiceImpl - getAllAlbums method called in Service
+2026-03-09 09:31:35 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:31:35 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0
+2026-03-09 09:31:35 [http-nio-8080-exec-9] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:31:35 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:31:36 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:31:36 [http-nio-8080-exec-7] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:31:36 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:31:36 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:31:36 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:31:36 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:31:37 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:31:37 [http-nio-8080-exec-3] INFO  com.revplay.app.rest.PodcastRestController - getAllPodcasts method called
+2026-03-09 09:31:37 [http-nio-8080-exec-3] INFO  com.revplay.app.service.PodcastServiceImpl - getAllPodcasts method called in Service
+2026-03-09 09:31:37 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.podcast_id,
+        p1_0.artist_id,
+        p1_0.category,
+        p1_0.cover_image_url,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.host_name,
+        p1_0.title 
+    from
+        podcast p1_0 
+    order by
+        p1_0.created_at desc
+2026-03-09 09:31:39 [http-nio-8080-exec-4] INFO  com.revplay.app.rest.AlbumRestController - getAllAlbums method called
+2026-03-09 09:31:39 [http-nio-8080-exec-4] INFO  com.revplay.app.service.AlbumServiceImpl - getAllAlbums method called in Service
+2026-03-09 09:31:40 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:31:40 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:31:42 [http-nio-8080-exec-6] INFO  com.revplay.app.rest.AlbumRestController - getAlbumById method called for albumId: 43
+2026-03-09 09:31:42 [http-nio-8080-exec-6] INFO  com.revplay.app.service.AlbumServiceImpl - getAlbumById method called in Service for albumId: 43
+2026-03-09 09:31:42 [http-nio-8080-exec-5] INFO  com.revplay.app.rest.AlbumRestController - getAlbumSongs method called for albumId: 43
+2026-03-09 09:31:42 [http-nio-8080-exec-5] INFO  com.revplay.app.service.SongServiceImpl - getSongsByAlbum method called in Service for albumId: 43
+2026-03-09 09:31:42 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    where
+        s1_0.album_id=?
+2026-03-09 09:31:42 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0 
+    where
+        a1_0.album_id=?
+2026-03-09 09:31:42 [http-nio-8080-exec-5] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:31:42 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:31:43 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:31:43 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:31:43 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:31:50 [http-nio-8080-exec-8] INFO  com.revplay.app.rest.HistoryRestController - getUserHistory method called for userId: 21
+2026-03-09 09:31:50 [http-nio-8080-exec-8] INFO  com.revplay.app.service.HistoryServiceImpl - getUserHistory method called in Service for userId: 21
+2026-03-09 09:31:50 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        lh1_0.history_id,
+        lh1_0.action_type,
+        lh1_0.played_at,
+        lh1_0.song_id,
+        lh1_0.user_id 
+    from
+        listening_history lh1_0 
+    where
+        lh1_0.user_id=? 
+    order by
+        lh1_0.played_at desc
+2026-03-09 09:31:51 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0
+2026-03-09 09:31:52 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:31:52 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0
+2026-03-09 09:31:58 [http-nio-8080-exec-7] INFO  com.revplay.app.rest.PlaylistRestController - getPublicPlaylists method called
+2026-03-09 09:31:58 [http-nio-8080-exec-7] INFO  com.revplay.app.service.PlaylistServiceImpl - getPublicPlaylists method called in Service
+2026-03-09 09:31:58 [http-nio-8080-exec-9] INFO  com.revplay.app.rest.PlaylistRestController - getUserPlaylists method called for userId: 21
+2026-03-09 09:31:58 [http-nio-8080-exec-9] INFO  com.revplay.app.service.PlaylistServiceImpl - getUserPlaylists method called in Service for userId: 21
+2026-03-09 09:31:58 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.playlist_id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.name,
+        p1_0.privacy_status,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlist p1_0 
+    where
+        p1_0.user_id=? 
+    order by
+        p1_0.updated_at desc
+2026-03-09 09:31:58 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.playlist_id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.name,
+        p1_0.privacy_status,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlist p1_0 
+    where
+        p1_0.privacy_status=? 
+    order by
+        p1_0.updated_at desc
+2026-03-09 09:31:59 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.song_id,
+        s1_1.album_id,
+        s1_1.artist_id,
+        s1_1.cover_image_url,
+        s1_1.created_at,
+        s1_1.duration_seconds,
+        s1_1.file_url,
+        s1_1.genre_id,
+        s1_1.is_active,
+        s1_1.play_count,
+        s1_1.release_date,
+        s1_1.title 
+    from
+        playlist_song s1_0 
+    join
+        song s1_1 
+            on s1_1.song_id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-03-09 09:31:59 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.song_id,
+        s1_1.album_id,
+        s1_1.artist_id,
+        s1_1.cover_image_url,
+        s1_1.created_at,
+        s1_1.duration_seconds,
+        s1_1.file_url,
+        s1_1.genre_id,
+        s1_1.is_active,
+        s1_1.play_count,
+        s1_1.release_date,
+        s1_1.title 
+    from
+        playlist_song s1_0 
+    join
+        song s1_1 
+            on s1_1.song_id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-03-09 09:31:59 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.song_id,
+        s1_1.album_id,
+        s1_1.artist_id,
+        s1_1.cover_image_url,
+        s1_1.created_at,
+        s1_1.duration_seconds,
+        s1_1.file_url,
+        s1_1.genre_id,
+        s1_1.is_active,
+        s1_1.play_count,
+        s1_1.release_date,
+        s1_1.title 
+    from
+        playlist_song s1_0 
+    join
+        song s1_1 
+            on s1_1.song_id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-03-09 09:31:59 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.song_id,
+        s1_1.album_id,
+        s1_1.artist_id,
+        s1_1.cover_image_url,
+        s1_1.created_at,
+        s1_1.duration_seconds,
+        s1_1.file_url,
+        s1_1.genre_id,
+        s1_1.is_active,
+        s1_1.play_count,
+        s1_1.release_date,
+        s1_1.title 
+    from
+        playlist_song s1_0 
+    join
+        song s1_1 
+            on s1_1.song_id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-03-09 09:31:59 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.song_id,
+        s1_1.album_id,
+        s1_1.artist_id,
+        s1_1.cover_image_url,
+        s1_1.created_at,
+        s1_1.duration_seconds,
+        s1_1.file_url,
+        s1_1.genre_id,
+        s1_1.is_active,
+        s1_1.play_count,
+        s1_1.release_date,
+        s1_1.title 
+    from
+        playlist_song s1_0 
+    join
+        song s1_1 
+            on s1_1.song_id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-03-09 09:31:59 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.song_id,
+        s1_1.album_id,
+        s1_1.artist_id,
+        s1_1.cover_image_url,
+        s1_1.created_at,
+        s1_1.duration_seconds,
+        s1_1.file_url,
+        s1_1.genre_id,
+        s1_1.is_active,
+        s1_1.play_count,
+        s1_1.release_date,
+        s1_1.title 
+    from
+        playlist_song s1_0 
+    join
+        song s1_1 
+            on s1_1.song_id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-03-09 09:32:01 [http-nio-8080-exec-10] INFO  com.revplay.app.rest.AlbumRestController - getAllAlbums method called
+2026-03-09 09:32:01 [http-nio-8080-exec-10] INFO  com.revplay.app.service.AlbumServiceImpl - getAllAlbums method called in Service
+2026-03-09 09:32:01 [http-nio-8080-exec-6] INFO  com.revplay.app.rest.SongRestController - getTopSongs method called with limit: 10
+2026-03-09 09:32:01 [http-nio-8080-exec-5] INFO  com.revplay.app.rest.SongRestController - getAllSongs method called
+2026-03-09 09:32:01 [http-nio-8080-exec-5] INFO  com.revplay.app.service.SongServiceImpl - getAllSongs method called in Service
+2026-03-09 09:32:01 [http-nio-8080-exec-6] INFO  com.revplay.app.service.SongServiceImpl - getTopPlayedSongs method called in Service with limit: 10
+2026-03-09 09:32:01 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    order by
+        s1_0.play_count desc 
+    fetch
+        first ? rows only
+2026-03-09 09:32:02 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0
+2026-03-09 09:32:02 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:32:02 [http-nio-8080-exec-6] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:32:02 [http-nio-8080-exec-5] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:32:02 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:32:02 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:32:02 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:32:02 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:32:02 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:32:03 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:32:03 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:32:03 [http-nio-8080-exec-1] INFO  com.revplay.app.rest.PodcastRestController - getAllPodcasts method called
+2026-03-09 09:32:03 [http-nio-8080-exec-1] INFO  com.revplay.app.service.PodcastServiceImpl - getAllPodcasts method called in Service
+2026-03-09 09:32:03 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.podcast_id,
+        p1_0.artist_id,
+        p1_0.category,
+        p1_0.cover_image_url,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.host_name,
+        p1_0.title 
+    from
+        podcast p1_0 
+    order by
+        p1_0.created_at desc
+2026-03-09 09:32:06 [http-nio-8080-exec-4] INFO  com.revplay.app.rest.AlbumRestController - getAlbumSongs method called for albumId: 121
+2026-03-09 09:32:06 [http-nio-8080-exec-2] INFO  com.revplay.app.rest.AlbumRestController - getAlbumById method called for albumId: 121
+2026-03-09 09:32:06 [http-nio-8080-exec-4] INFO  com.revplay.app.service.SongServiceImpl - getSongsByAlbum method called in Service for albumId: 121
+2026-03-09 09:32:06 [http-nio-8080-exec-2] INFO  com.revplay.app.service.AlbumServiceImpl - getAlbumById method called in Service for albumId: 121
+2026-03-09 09:32:06 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    where
+        s1_0.album_id=?
+2026-03-09 09:32:07 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0 
+    where
+        a1_0.album_id=?
+2026-03-09 09:32:07 [http-nio-8080-exec-4] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:32:07 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:32:07 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:32:07 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:32:07 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:32:11 [http-nio-8080-exec-10] INFO  com.revplay.app.controller.ViewController - welcome method called
+2026-03-09 09:32:12 [http-nio-8080-exec-2] INFO  com.revplay.app.controller.ViewController - login method called
+2026-03-09 09:32:14 [http-nio-8080-exec-10] INFO  com.revplay.app.controller.ViewController - register method called
+2026-03-09 09:32:43 [http-nio-8080-exec-4] INFO  com.revplay.app.rest.AuthRestController - registerArtist method called for email: ex@gmail.com
+2026-03-09 09:32:43 [http-nio-8080-exec-2] INFO  com.revplay.app.rest.AuthRestController - registerArtist method called for email: ex@gmail.com
+2026-03-09 09:32:43 [http-nio-8080-exec-4] INFO  com.revplay.app.service.ArtistServiceImpl - registerArtist method called in Service for email: ex@gmail.com
+2026-03-09 09:32:43 [http-nio-8080-exec-2] INFO  com.revplay.app.service.ArtistServiceImpl - registerArtist method called in Service for email: ex@gmail.com
+2026-03-09 09:32:43 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        artist_account
+        (banner_image, bio, created_at, email, genre, instagram_link, password_hash, password_hint, profile_picture, security_answer_hash, security_question, spotify_link, stage_name, status, twitter_link, website_link, youtube_link, artist_id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-03-09 09:32:43 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        artist_account
+        (banner_image, bio, created_at, email, genre, instagram_link, password_hash, password_hint, profile_picture, security_answer_hash, security_question, spotify_link, stage_name, status, twitter_link, website_link, youtube_link, artist_id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default)
+2026-03-09 09:32:44 [http-nio-8080-exec-4] INFO  com.revplay.app.service.ArtistServiceImpl - getArtistById method called in Service for id: 241
+2026-03-09 09:32:44 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0 
+    where
+        aa1_0.artist_id=?
+2026-03-09 09:32:45 [http-nio-8080-exec-6] INFO  com.revplay.app.controller.ViewController - home method called
+2026-03-09 09:32:45 [http-nio-8080-exec-5] INFO  com.revplay.app.rest.AlbumRestController - getAllAlbums method called
+2026-03-09 09:32:45 [http-nio-8080-exec-5] INFO  com.revplay.app.service.AlbumServiceImpl - getAllAlbums method called in Service
+2026-03-09 09:32:45 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:32:45 [http-nio-8080-exec-3] INFO  com.revplay.app.rest.SongRestController - getAllSongs method called
+2026-03-09 09:32:45 [http-nio-8080-exec-3] INFO  com.revplay.app.service.SongServiceImpl - getAllSongs method called in Service
+2026-03-09 09:32:45 [http-nio-8080-exec-10] INFO  com.revplay.app.rest.SongRestController - getTopSongs method called with limit: 10
+2026-03-09 09:32:45 [http-nio-8080-exec-10] INFO  com.revplay.app.service.SongServiceImpl - getTopPlayedSongs method called in Service with limit: 10
+2026-03-09 09:32:45 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    order by
+        s1_0.play_count desc 
+    fetch
+        first ? rows only
+2026-03-09 09:32:45 [http-nio-8080-exec-2] WARN  org.hibernate.engine.jdbc.spi.SqlExceptionHelper - SQL Error: 1, SQLState: 23000
+2026-03-09 09:32:45 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0
+2026-03-09 09:32:45 [http-nio-8080-exec-2] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper - ORA-00001: unique constraint (FAYYUALID_SCHEMA_17ZIM.SYS_C002286716) violated on table FAYYUALID_SCHEMA_17ZIM.ARTIST_ACCOUNT columns (EMAIL)
+ORA-03301: (ORA-00001 details) row with column values (EMAIL:'ex@gmail.com') already exists
+
+https://docs.oracle.com/error-help/db/ora-00001/
+2026-03-09 09:32:45 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:32:45 [http-nio-8080-exec-3] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:32:45 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:32:46 [http-nio-8080-exec-10] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:32:46 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0
+2026-03-09 09:32:46 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:32:46 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        g1_0.genre_id,
+        g1_0.genre_name 
+    from
+        genre g1_0
+2026-03-09 09:32:46 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:32:46 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0
+2026-03-09 09:32:47 [http-nio-8080-exec-4] INFO  com.revplay.app.rest.PodcastRestController - getAllPodcasts method called
+2026-03-09 09:32:47 [http-nio-8080-exec-4] INFO  com.revplay.app.service.PodcastServiceImpl - getAllPodcasts method called in Service
+2026-03-09 09:32:47 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.podcast_id,
+        p1_0.artist_id,
+        p1_0.category,
+        p1_0.cover_image_url,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.host_name,
+        p1_0.title 
+    from
+        podcast p1_0 
+    order by
+        p1_0.created_at desc
+2026-03-09 09:32:50 [http-nio-8080-exec-9] INFO  com.revplay.app.rest.ArtistRestController - getArtistById method called for artistId: 241
+2026-03-09 09:32:50 [http-nio-8080-exec-9] INFO  com.revplay.app.service.ArtistServiceImpl - getArtistById method called in Service for id: 241
+2026-03-09 09:32:50 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0 
+    where
+        aa1_0.artist_id=?
+2026-03-09 09:32:50 [http-nio-8080-exec-6] INFO  com.revplay.app.rest.ArtistRestController - getStats method called for artistId: 241
+2026-03-09 09:32:50 [http-nio-8080-exec-6] INFO  com.revplay.app.service.ArtistServiceImpl - getArtistStats method called in Service for artistId: 241
+2026-03-09 09:32:50 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    where
+        s1_0.artist_id=?
+2026-03-09 09:32:51 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        coalesce(sum(s1_0.play_count), 0) 
+    from
+        song s1_0 
+    where
+        s1_0.artist_id=?
+2026-03-09 09:32:51 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        coalesce(sum(pe1_0.play_count), 0) 
+    from
+        podcast_episode pe1_0,
+        podcast p1_0 
+    where
+        pe1_0.podcast_id=p1_0.podcast_id 
+        and p1_0.artist_id=?
+2026-03-09 09:32:52 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        favorite_song fs1_0 
+    join
+        song s1_0 
+            on fs1_0.song_id=s1_0.song_id 
+    where
+        s1_0.artist_id=?
+2026-03-09 09:32:52 [http-nio-8080-exec-6] INFO  com.revplay.app.service.SongServiceImpl - countSongsByArtist method called in Service for artistId: 241
+2026-03-09 09:32:52 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    where
+        s1_0.artist_id=?
+2026-03-09 09:32:58 [http-nio-8080-exec-10] INFO  com.revplay.app.rest.AlbumRestController - getAlbumsByArtist method called for artistId: 241
+2026-03-09 09:32:58 [http-nio-8080-exec-2] INFO  com.revplay.app.rest.ArtistRestController - getArtistById method called for artistId: 241
+2026-03-09 09:32:58 [http-nio-8080-exec-4] INFO  com.revplay.app.rest.SongRestController - getSongsByArtist method called for artistId: 241
+2026-03-09 09:32:58 [http-nio-8080-exec-4] INFO  com.revplay.app.service.SongServiceImpl - getSongsByArtist method called in Service for artistId: 241
+2026-03-09 09:32:58 [http-nio-8080-exec-2] INFO  com.revplay.app.service.ArtistServiceImpl - getArtistById method called in Service for id: 241
+2026-03-09 09:32:58 [http-nio-8080-exec-10] INFO  com.revplay.app.service.AlbumServiceImpl - getAlbumsByArtist method called in Service for artistId: 241
+2026-03-09 09:32:58 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.song_id,
+        s1_0.album_id,
+        s1_0.artist_id,
+        s1_0.cover_image_url,
+        s1_0.created_at,
+        s1_0.duration_seconds,
+        s1_0.file_url,
+        s1_0.genre_id,
+        s1_0.is_active,
+        s1_0.play_count,
+        s1_0.release_date,
+        s1_0.title 
+    from
+        song s1_0 
+    where
+        s1_0.artist_id=?
+2026-03-09 09:32:58 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        a1_0.album_id,
+        a1_0.artist_id,
+        a1_0.cover_image_url,
+        a1_0.created_at,
+        a1_0.description,
+        a1_0.release_date,
+        a1_0.title 
+    from
+        album a1_0 
+    where
+        a1_0.artist_id=?
+2026-03-09 09:32:58 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        aa1_0.artist_id,
+        aa1_0.banner_image,
+        aa1_0.bio,
+        aa1_0.created_at,
+        aa1_0.email,
+        aa1_0.genre,
+        aa1_0.instagram_link,
+        aa1_0.password_hash,
+        aa1_0.password_hint,
+        aa1_0.profile_picture,
+        aa1_0.security_answer_hash,
+        aa1_0.security_question,
+        aa1_0.spotify_link,
+        aa1_0.stage_name,
+        aa1_0.status,
+        aa1_0.twitter_link,
+        aa1_0.website_link,
+        aa1_0.youtube_link 
+    from
+        artist_account aa1_0 
+    where
+        aa1_0.artist_id=?
+2026-03-09 09:32:58 [http-nio-8080-exec-4] INFO  com.revplay.app.service.SongServiceImpl - enrichSongs method called in Service
+2026-03-09 09:33:02 [http-nio-8080-exec-5] INFO  com.revplay.app.controller.ViewController - welcome method called
+2026-03-09 11:06:49 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m50s615ms982µs900ns).
+2026-03-09 12:03:02 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m43s224ms183µs400ns).
+2026-03-09 12:12:00 [http-nio-8080-exec-2] INFO  com.revplay.app.controller.ViewController - welcome method called
+2026-03-09 12:12:07 [http-nio-8080-exec-1] INFO  com.revplay.app.controller.ViewController - login method called
+2026-03-09 12:12:09 [http-nio-8080-exec-2] INFO  com.revplay.app.controller.ViewController - welcome method called

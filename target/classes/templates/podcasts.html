@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('RevPlay - Podcasts')}"></head>
+
+<body>
+    <div id="app-page" class="app-layout">
+        <aside th:replace="~{fragments :: sidebar('podcasts')}"></aside>
+        <main class="main-content">
+            <div th:replace="~{fragments :: topbar}"></div>
+            <div class="content-area animate-in" id="content-area">
+                <div class="page-header">
+                    <h2>Podcasts</h2>
+                </div>
+                <div class="cards-grid">
+                    <div th:each="podcast : ${podcasts}" class="card">
+                        <div class="card-image" style="background:linear-gradient(135deg, #0d9488, #5eead4)">🎙️</div>
+                        <div class="card-title" th:text="${podcast.title}">Podcast Title</div>
+                        <div class="card-subtitle" th:text="${podcast.hostName}">Host</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:replace="~{fragments :: player}"></div>
+    </div>
+    <div th:replace="~{fragments :: scripts}"></div>
+</body>
+
+</html>
