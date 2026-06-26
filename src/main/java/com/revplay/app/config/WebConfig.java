@@ -9,13 +9,19 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // Serve static CSS and JS files
+        registry.addResourceHandler("/css/**")
+                .addResourceLocations("classpath:/static/css/");
+
+        registry.addResourceHandler("/js/**")
+                .addResourceLocations("classpath:/static/js/");
+
         // Serve uploaded audio files from the uploads/audio directory
         registry.addResourceHandler("/audio/**")
                 .addResourceLocations("file:uploads/audio/");
 
         // Serve uploaded images and static background images
         registry.addResourceHandler("/images/**")
-                .addResourceLocations("file:uploads/images/", "classpath:/static/images/",
-                        "file:src/main/resources/static/images/");
+                .addResourceLocations("file:uploads/images/", "classpath:/static/images/");
     }
 }
